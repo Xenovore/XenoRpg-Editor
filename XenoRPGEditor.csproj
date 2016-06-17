@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1E8E7039-81FF-4496-9DA8-4FB640A7ECC0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XenoRPGEditor</RootNamespace>
+    <AssemblyName>XenoRPGEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>XenoRPGEditor.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FilterList.cs" />
+    <Compile Include="FormEditCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditCharacter.Designer.cs">
+      <DependentUpon>FormEditCharacter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditModifiers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditModifiers.Designer.cs">
+      <DependentUpon>FormEditModifiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditItem.Designer.cs">
+      <DependentUpon>FormEditItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditItemType.Designer.cs">
+      <DependentUpon>FormEditItemType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InvContainerControl.Designer.cs">
+      <DependentUpon>InvContainerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvIcons.cs" />
+    <Compile Include="Misc\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserCtrlCharactersEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrlCharactersEditor.Designer.cs">
+      <DependentUpon>UserCtrlCharactersEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCtrlItemsEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrlItemsEditor.Designer.cs">
+      <DependentUpon>UserCtrlItemsEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrlStatsEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrlStatsEditor.Designer.cs">
+      <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormEditCharacter.resx">
+      <DependentUpon>FormEditCharacter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditItem.resx">
+      <DependentUpon>FormEditItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditItemType.resx">
+      <DependentUpon>FormEditItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvContainerControl.resx">
+      <DependentUpon>InvContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserCtrlCharactersEditor.resx">
+      <DependentUpon>UserCtrlCharactersEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrlItemsEditor.resx">
+      <DependentUpon>UserCtrlItemsEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrlStatsEditor.resx">
+      <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\KevInvTest.Source.RpgItem.datasource">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XenoRpgLib_cs\XenoRpgLib_cs.csproj">
+      <Project>{ebfea80f-108e-4936-8ca2-f01e311e79eb}</Project>
+      <Name>XenoRpgLib_cs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
