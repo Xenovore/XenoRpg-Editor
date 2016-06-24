@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 
 using XRpg;
+using XRpgUtils;
 
 namespace XenoRPGEditor
 {
 	public partial class FormEditItem: Form
 	{
-		private InvIcons m_invicons = new InvIcons( @"..\RpgInvIcons.png" );
+		private ImageAtlas m_invicons = new ImageAtlas( @"..\RpgInvIcons.png" );
 		private FormEditItemType formTypeEdit;
 
 		public DataRow dataRowItem { get; set; }
@@ -56,7 +57,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		public void UpdateIconPreview()
 		{
-			pictItemIcon.Image = m_invicons.GetIconBitmap( (int)spinIconIdx.Value );
+			pictItemIcon.Image = m_invicons.GetSubImageAt( (int)spinIconIdx.Value );
 		}
 
 

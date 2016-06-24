@@ -91,7 +91,6 @@
     <Compile Include="InvContainerControl.Designer.cs">
       <DependentUpon>InvContainerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvIcons.cs" />
     <Compile Include="Misc\ImageComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -115,6 +114,7 @@
     <Compile Include="UserCtrlStatsEditor.Designer.cs">
       <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="XRpgUtils\ImageAtlas.cs" />
     <EmbeddedResource Include="FormEditCharacter.resx">
       <DependentUpon>FormEditCharacter.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +171,7 @@
       <Name>XenoRpgLib_cs</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

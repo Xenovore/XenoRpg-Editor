@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace XenoRPGEditor
+namespace XRpgUtils
 {
-	class InvIcons
+	class ImageAtlas
 	{
 		private Bitmap m_bitmap;
 		private List<Rectangle> m_listRects;
+		//TODO: UV coords list
 		public int IconCount { get { return m_listRects.Count; } }
 
 		//----------------------------------------------------------------------------
-		public InvIcons( string strFilename )
+		public ImageAtlas( string strFilename )
 		{
 			try
 			{
@@ -30,13 +31,18 @@ namespace XenoRPGEditor
 			}
 			m_listRects = new List<Rectangle>();
 
-			int iCount = ConstructIconRects();
+			//TODO: Look for XML file with same name as image and load rects/uvs from there
+
+			int iCount = ConstructRects();
+
+			//TODO: Construct UVs
+
 			if ( iCount == 0 ) MessageBox.Show( "Crap." );
 
 		}
 
 		//----------------------------------------------------------------------------
-		Int32 ConstructIconRects()
+		Int32 ConstructRects()
 		{
 			// Already populated? Return count...
 			if ( m_listRects.Count > 0 ) return m_listRects.Count;
@@ -53,12 +59,11 @@ namespace XenoRPGEditor
 			int iPosY = 0;
 
 			// ascertain the height of this row...
-			Color color;
 			m_listRects.Clear();
 			while ( iPosY < m_bitmap.Height )
 			{
 				// Skip any seperator colors
-				color = m_bitmap.GetPixel( 0, iPosY );
+				Color color = m_bitmap.GetPixel( 0, iPosY );
 				if ( color == colorSep )
 				{
 					iPosY++;
@@ -104,12 +109,14 @@ namespace XenoRPGEditor
 				}
 			}
 
+			//TODO: Save rect list to XML file with same name as parent image
+
 			return m_listRects.Count;
 		}
 
 
 		//----------------------------------------------------------------------------
-		public Rectangle GetIconRect( int i )
+		public Rectangle GetImageRectAt( int i )
 		{
 			if ( i >= 0 && i < m_listRects.Count )
 				return m_listRects[ i ];
@@ -119,9 +126,9 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------------
-		public Bitmap GetIconBitmap( int i )
+		public Bitmap GetImageAt( int i )
 		{
-			return m_bitmap.Clone( GetIconRect( i ), m_bitmap.PixelFormat );
+			return m_bitmap.Clone( GetImageRectAt( i ), m_bitmap.PixelFormat );
 		}
 
 	}
