@@ -57,7 +57,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		public void UpdateIconPreview()
 		{
-			pictItemIcon.Image = m_invicons.GetSubImageAt( (int)spinIconIdx.Value );
+			pictItemIcon.Image = m_invicons.GetSubImageAt( (ushort)spinIconIdx.Value );
 		}
 
 

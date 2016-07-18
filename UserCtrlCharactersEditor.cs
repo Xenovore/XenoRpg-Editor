@@ -1,4 +1,7 @@
-﻿using System;
+﻿#pragma warning disable RECS0113 // Redundant comma in array initializer
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -30,7 +33,6 @@ namespace XenoRPGEditor
 			45,
 			45,
 			45,
-
 		};
 
 		bool _bModified = false;
@@ -87,7 +89,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void LoadCharactersTable()
 		{
-			List<CharacterBase> listCharacters = FormMain.RpgDataMan.LoadCharacters();
+			List<CharacterBase> listCharacters = FormMain.CharManager.LoadCharacters();
 
 			gridview.DataSource = listCharacters;
 

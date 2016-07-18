@@ -13,14 +13,16 @@ namespace XenoRPGEditor
 {
 	public partial class FormEditCharacter: Form
 	{
-		public DataManager RpgMan;
+		public CharacterManager charManager;
+		public InventoryManager invManager;
+
 		public CharacterPlayer player;
 
 		public FormEditCharacter()
 		{
 			InitializeComponent();
 
-			FormMain.RpgDataMan.LoadAllStats();
+			FormMain.CharManager.LoadAllStats();
 			//FormMain.RpgMan.LoadMasterSkills();
 
 			// Init UI for item type selection...
@@ -226,7 +228,7 @@ namespace XenoRPGEditor
 				ItemType.ContExo,
 				ItemType.Container,
 				1 );
-			
+
 			contBodySlot.AddNewContainer( "BracerL", ItemType.ContSlot, ItemType.BodyArm );
 
 			contBodySlot = contParent.AddNewContainer(

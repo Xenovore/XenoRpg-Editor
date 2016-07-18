@@ -7,7 +7,8 @@ namespace XenoRPGEditor
 {
 	public partial class FormMain: Form
 	{
-		public static DataManager RpgDataMan { get; set; }
+		public static CharacterManager CharManager { get; set; }
+		public static InventoryManager InvManager { get; set; }
 
 		//----------------------------------------------------------------------
 		// AddFormTab( <form> )
@@ -53,15 +54,18 @@ namespace XenoRPGEditor
 		{
 			InitializeComponent();
 
-			RpgDataMan = new DataManager();
-
-			RpgDataMan.InitDB();
+			CharManager = new CharacterManager();
+			CharManager.InitDB();
 
 			var ucCharacters = new UserCtrlCharactersEditor();
 			AddCtrlTab( ucCharacters, "Characters" );
 
 			var ucStats = new UserCtrlStatsEditor();
 			AddCtrlTab( ucStats, "Stats" );
+
+
+			InvManager = new InventoryManager();
+			InvManager.InitDB();
 
 			var ucItems = new UserCtrlItemsEditor();
 			AddCtrlTab( ucItems, "Items" );
@@ -75,11 +79,8 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		~FormMain()
-		{
-			//TODO: RpgManager.Uninit
-
-		}
+		// DESTRUCTOR
+		//TODO: RpgManager.Uninit
 
 
 		private void button1_Click_2( object sender, EventArgs e )

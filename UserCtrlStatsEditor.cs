@@ -43,26 +43,25 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		private void SetColWidths( DataGridView gridview, int[] iColWidths )
+		private void SetColWidths( DataGridView gv, int[] iColWidths )
 		{
 			// Use shortest size so we don't run into problems if they don't match...
-			int iColMax = Math.Min( gridview.Columns.Count, iColWidths.Length );
+			int iColMax = Math.Min( gv.Columns.Count, iColWidths.Length );
 
 			for ( int i = 0; i < iColMax; ++i )
 			{
-				gridview.Columns[ i ].Width = iColWidths[ i ];
+				gv.Columns[ i ].Width = iColWidths[ i ];
 			}
 
 			// Set last column to fill...
-			gridview.Columns[ gridview.Columns.Count - 1 ].AutoSizeMode =
-					DataGridViewAutoSizeColumnMode.Fill;
+			gv.Columns[ gv.Columns.Count - 1 ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 		}
 
 
 		//----------------------------------------------------------------------
 		void LoadAllStats()
 		{
-			Dictionary<int, StatBase> stats = FormMain.RpgDataMan.LoadAllStats();
+			Dictionary<int, StatBase> stats = FormMain.CharManager.LoadAllStats();
 
 			//NOTE: Without the BindingSource, gridview is not editable.
 			var blist = new FilterList<StatBase>( stats.Values.ToList() );
@@ -76,7 +75,7 @@ namespace XenoRPGEditor
 
 		void LoadStatTypes()
 		{
-			Dictionary<int, StatType> listStatTypes = FormMain.RpgDataMan.LoadStatTypes();
+			Dictionary<int, StatType> listStatTypes = FormMain.CharManager.LoadStatTypes();
 		}
 
 
@@ -116,7 +115,7 @@ namespace XenoRPGEditor
 		{
 			var list = ( (BindingSource)gridview.DataSource ).List;
 
-			int result = FormMain.RpgDataMan.SaveMasterAttribs( (List<StatBase>)list );
+			int result = FormMain.CharManager.SaveMasterAttribs( (List<StatBase>)list );
 
 			return ( result != 0 );
 		}

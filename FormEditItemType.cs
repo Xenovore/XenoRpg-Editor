@@ -14,7 +14,7 @@ namespace XenoRPGEditor
 		List<ItemTypeDef> _listItemTypes;
 
 		// NOTE: These are special case; icons are for item TYPES not items
-		public Dictionary<ItemType, byte> dictItemTypeNames = new Dictionary<ItemType, byte>()
+		public Dictionary<ItemType, byte> dictItemTypeNames = new Dictionary<ItemType, byte>
 		{
 			// Type                      Icon Idx
 			{ ItemType.None         ,  0 },
@@ -127,7 +127,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void LoadItemTypesTable()
 		{
-			_listItemTypes = FormMain.RpgDataMan.LoadItemTypes();
+			_listItemTypes = FormMain.InvManager.LoadItemTypes();
 		}
 
 

@@ -56,10 +56,11 @@
 			this.lblCharSkills = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.invContainerControl1 = new XenoRPGEditor.InvContainerControl();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.lblInvTree = new System.Windows.Forms.Label();
 			this.treeviewInv = new System.Windows.Forms.TreeView();
+			this.invContainerControl1 = new XenoRPGEditor.InvContainerControl();
+			this.invItemControl1 = new XenoRPGEditor.InvItemControl();
 			this.menuTree.SuspendLayout();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -328,27 +329,20 @@
 			this.tabControl1.Location = new System.Drawing.Point(3, 3);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(258, 250);
+			this.tabControl1.Size = new System.Drawing.Size(281, 392);
 			this.tabControl1.TabIndex = 23;
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.invItemControl1);
 			this.tabPage1.Controls.Add(this.invContainerControl1);
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(250, 224);
+			this.tabPage1.Size = new System.Drawing.Size(273, 366);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// invContainerControl1
-			// 
-			this.invContainerControl1.Location = new System.Drawing.Point(21, 43);
-			this.invContainerControl1.Name = "invContainerControl1";
-			this.invContainerControl1.Size = new System.Drawing.Size(204, 15);
-			this.invContainerControl1.TabIndex = 23;
-			this.invContainerControl1.Text = "invContainerControl1";
 			// 
 			// tabPage2
 			// 
@@ -357,7 +351,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(250, 224);
+			this.tabPage2.Size = new System.Drawing.Size(273, 366);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -385,6 +379,30 @@
 			this.treeviewInv.Name = "treeviewInv";
 			this.treeviewInv.Size = new System.Drawing.Size(280, 70);
 			this.treeviewInv.TabIndex = 22;
+			// 
+			// invContainerControl1
+			// 
+			this.invContainerControl1.FrameImageFilename = "images/rpginvicons.png";
+			this.invContainerControl1.GradientAngle = 55;
+			this.invContainerControl1.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+			this.invContainerControl1.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
+			this.invContainerControl1.Location = new System.Drawing.Point(27, 52);
+			this.invContainerControl1.Name = "invContainerControl1";
+			this.invContainerControl1.Size = new System.Drawing.Size(200, 184);
+			this.invContainerControl1.TabIndex = 23;
+			this.invContainerControl1.Text = "invContainerControl1";
+			this.invContainerControl1.UIScale = 0F;
+			// 
+			// invItemControl1
+			// 
+			this.invItemControl1.ItemImageFilename = null;
+			this.invItemControl1.Location = new System.Drawing.Point(115, 80);
+			this.invItemControl1.Name = "invItemControl1";
+			this.invItemControl1.Size = new System.Drawing.Size(75, 73);
+			this.invItemControl1.TabIndex = 24;
+			this.invItemControl1.Text = "invItemControl1";
+			this.invItemControl1.TextPos = XenoRPGEditor.InvItemControl.TextPosition.BottomRight;
+			this.invItemControl1.UIScale = 0F;
 			// 
 			// FormEditCharacter
 			// 
@@ -451,6 +469,7 @@
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Label lblInvTree;
 		private System.Windows.Forms.TreeView treeviewInv;
+		private InvItemControl invItemControl1;
 
 	}
 }
