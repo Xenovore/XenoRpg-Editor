@@ -59,8 +59,8 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.lblInvTree = new System.Windows.Forms.Label();
 			this.treeviewInv = new System.Windows.Forms.TreeView();
-			this.invContainerControl1 = new XenoRPGEditor.InvContainerControl();
 			this.invItemControl1 = new XenoRPGEditor.InvItemControl();
+			this.invContainerControl1 = new XenoRPGEditor.InvContainerControl();
 			this.menuTree.SuspendLayout();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -250,8 +250,8 @@
 			// splitContainer2.Panel2
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-			this.splitContainer2.Size = new System.Drawing.Size(640, 401);
-			this.splitContainer2.SplitterDistance = 340;
+			this.splitContainer2.Size = new System.Drawing.Size(805, 609);
+			this.splitContainer2.SplitterDistance = 427;
 			this.splitContainer2.TabIndex = 20;
 			// 
 			// splitContainer1
@@ -272,8 +272,8 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.gridSkills);
 			this.splitContainer1.Panel2.Controls.Add(this.lblCharSkills);
-			this.splitContainer1.Size = new System.Drawing.Size(328, 387);
-			this.splitContainer1.SplitterDistance = 220;
+			this.splitContainer1.Size = new System.Drawing.Size(415, 595);
+			this.splitContainer1.SplitterDistance = 338;
 			this.splitContainer1.TabIndex = 18;
 			// 
 			// gridAttributes
@@ -286,7 +286,7 @@
 			this.gridAttributes.Location = new System.Drawing.Point(0, 16);
 			this.gridAttributes.Name = "gridAttributes";
 			this.gridAttributes.RowHeadersVisible = false;
-			this.gridAttributes.Size = new System.Drawing.Size(328, 202);
+			this.gridAttributes.Size = new System.Drawing.Size(415, 320);
 			this.gridAttributes.TabIndex = 15;
 			// 
 			// lblCharAttribs
@@ -309,7 +309,7 @@
 			this.gridSkills.Location = new System.Drawing.Point(0, 16);
 			this.gridSkills.Name = "gridSkills";
 			this.gridSkills.RowHeadersVisible = false;
-			this.gridSkills.Size = new System.Drawing.Size(328, 145);
+			this.gridSkills.Size = new System.Drawing.Size(415, 235);
 			this.gridSkills.TabIndex = 15;
 			// 
 			// lblCharSkills
@@ -324,12 +324,15 @@
 			// 
 			// tabControl1
 			// 
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Location = new System.Drawing.Point(3, 3);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(281, 392);
+			this.tabControl1.Size = new System.Drawing.Size(364, 600);
 			this.tabControl1.TabIndex = 23;
 			// 
 			// tabPage1
@@ -339,7 +342,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(273, 366);
+			this.tabPage1.Size = new System.Drawing.Size(356, 574);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -351,7 +354,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(273, 366);
+			this.tabPage2.Size = new System.Drawing.Size(356, 574);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -359,7 +362,7 @@
 			// lblInvTree
 			// 
 			this.lblInvTree.AutoSize = true;
-			this.lblInvTree.Location = new System.Drawing.Point(18, 40);
+			this.lblInvTree.Location = new System.Drawing.Point(5, 3);
 			this.lblInvTree.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblInvTree.Name = "lblInvTree";
 			this.lblInvTree.Size = new System.Drawing.Size(76, 13);
@@ -371,45 +374,50 @@
 			this.treeviewInv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.treeviewInv.BackColor = System.Drawing.SystemColors.Window;
+			this.treeviewInv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
 			this.treeviewInv.ContextMenuStrip = this.menuTree;
 			this.treeviewInv.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.treeviewInv.LineColor = System.Drawing.Color.DarkGray;
-			this.treeviewInv.Location = new System.Drawing.Point(18, 56);
+			this.treeviewInv.Location = new System.Drawing.Point(8, 19);
 			this.treeviewInv.Name = "treeviewInv";
-			this.treeviewInv.Size = new System.Drawing.Size(280, 70);
+			this.treeviewInv.Size = new System.Drawing.Size(342, 549);
 			this.treeviewInv.TabIndex = 22;
-			// 
-			// invContainerControl1
-			// 
-			this.invContainerControl1.FrameImageFilename = "images/rpginvicons.png";
-			this.invContainerControl1.GradientAngle = 55;
-			this.invContainerControl1.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-			this.invContainerControl1.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
-			this.invContainerControl1.Location = new System.Drawing.Point(27, 52);
-			this.invContainerControl1.Name = "invContainerControl1";
-			this.invContainerControl1.Size = new System.Drawing.Size(200, 184);
-			this.invContainerControl1.TabIndex = 23;
-			this.invContainerControl1.Text = "invContainerControl1";
-			this.invContainerControl1.UIScale = 0F;
 			// 
 			// invItemControl1
 			// 
 			this.invItemControl1.ItemImageFilename = null;
 			this.invItemControl1.Location = new System.Drawing.Point(115, 80);
+			this.invItemControl1.Movable = false;
 			this.invItemControl1.Name = "invItemControl1";
 			this.invItemControl1.Size = new System.Drawing.Size(75, 73);
 			this.invItemControl1.TabIndex = 24;
 			this.invItemControl1.Text = "invItemControl1";
 			this.invItemControl1.TextPos = XenoRPGEditor.InvItemControl.TextPosition.BottomRight;
 			this.invItemControl1.UIScale = 0F;
+			this.invItemControl1.XRpgItem = null;
+			// 
+			// invContainerControl1
+			// 
+			this.invContainerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.invContainerControl1.FrameImageFilename = "images/rpginvicons.png";
+			this.invContainerControl1.GradientAngle = 55;
+			this.invContainerControl1.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+			this.invContainerControl1.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
+			this.invContainerControl1.Location = new System.Drawing.Point(6, 6);
+			this.invContainerControl1.Name = "invContainerControl1";
+			this.invContainerControl1.Size = new System.Drawing.Size(344, 562);
+			this.invContainerControl1.TabIndex = 23;
+			this.invContainerControl1.Text = "invContainerControl1";
+			this.invContainerControl1.UIScale = 0F;
 			// 
 			// FormEditCharacter
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(640, 464);
+			this.ClientSize = new System.Drawing.Size(805, 672);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.splitContainer2);
 			this.Name = "FormEditCharacter";

@@ -16,14 +16,18 @@ namespace XenoRPGEditor
 		public CharacterManager charManager;
 		public InventoryManager invManager;
 
-		public CharacterPlayer player;
+		public CharacterBase character;
 
 		public FormEditCharacter()
 		{
 			InitializeComponent();
 
-			FormMain.CharManager.LoadAllStats();
-			//FormMain.RpgMan.LoadMasterSkills();
+			charManager = FormMain.CharManager;
+			invManager  = FormMain.InvManager;
+
+			//TODO: DO WE NEED THIS HERE?
+			//FormMain.CharManager.LoadAllStats(); // Attributes, resistances, skills
+
 
 			// Init UI for item type selection...
 			/*
@@ -31,17 +35,11 @@ namespace XenoRPGEditor
 			comboItemTypes.DisplayMember = "Value";
 			comboItemTypes.ValueMember   = "Key";
 			*/
-			//TODO: Load player data from DB
-			player = new CharacterPlayer
-			{
-				Name = "Bob"
-			};
 
-			//TODO: Initialize/load player attributes and skills
-			//player.Load( "fileOrDB" );
-			//player.LoadAttribs( RpgMan.m_dictAttribsAll );
-			//player.LoadSkills( RpgMan.m_dictSkillsAll );
+			// Load default character
+			character = charManager.LoadCharacterById( 1 );
 
+			character._contBody = invManager.LoadContainer( character.ContBodyId );
 			/*
 			for ( int i = 0; i < player.m_listAttributes.Count; ++i )
 			{
@@ -56,7 +54,7 @@ namespace XenoRPGEditor
 			DataGridView dgv;
 
 			dgv = gridAttributes;
-			dgv.DataSource = player._listAttributes;
+			dgv.DataSource = character._listAttributes;
 			try
 			{
 				dgv.Columns[ 0 ].HeaderText = "Name";
@@ -76,7 +74,7 @@ namespace XenoRPGEditor
 				dgv.Columns[ 6 ].Width = 80;
 
 				dgv = gridSkills;
-				dgv.DataSource = player._listSkills;
+				dgv.DataSource = character._listSkills;
 				dgv.Columns[ 0 ].HeaderText = "Name";
 				dgv.Columns[ 1 ].HeaderText = "Abbr";
 				dgv.Columns[ 2 ].HeaderText = "Desc";
@@ -106,7 +104,7 @@ namespace XenoRPGEditor
 			RefreshTreeView();
 		}
 
-
+		/* BROKEN>>>>>
 		//----------------------------------------------------------------------
 		public void LoadInventoryTest( ItemContainer contParent )
 		{
@@ -352,7 +350,7 @@ namespace XenoRPGEditor
 				2 );
 
 		}
-
+		<<<<< broken */
 
 		//=====================================================================
 		// FORM UI STUFF
@@ -360,8 +358,10 @@ namespace XenoRPGEditor
 
 		private void loadFromTestToolStripMenuItem_Click( object sender, EventArgs e )
 		{
-			player.m_contBody.Clear();
-			LoadInventoryTest( player.m_contBody );
+			//player._contBody.Clear();
+
+			//TODO: Load from DB
+
 			RefreshTreeView();
 		}
 
@@ -370,19 +370,19 @@ namespace XenoRPGEditor
 		{
 			//TODO C++: Destroy old m_contBody if it exists
 
-			player.m_contBody.LoadFromXML( "TestInventory.xml" );
+			//player._contBody.LoadFromXML( "TestInventory.xml" );
 			RefreshTreeView();
 		}
 
 
 		private void saveToXMLToolStripMenuItem_Click( object sender, EventArgs e )
 		{
-			if ( player.m_contBody != null )
+			if ( character._contBody != null )
 			{
 				//TEST>>>>>
 				//TODO: MOVE TO MANAGER>>>>> player.m_contBody.SaveToDB();
 				//<<<<<
-				player.m_contBody.SaveToXML( "TestInventory.xml" );
+				//player._contBody.SaveToXML( "TestInventory.xml" );
 			}
 			else
 				MessageBox.Show( "Can't save empty inventory." );
@@ -425,25 +425,29 @@ namespace XenoRPGEditor
 			else
 			{
 				nodeNew.Text = "(empty)";
-				nodeNew.ForeColor = Color.LightGray;
+				nodeNew.ForeColor = Color.LightSteelBlue;
 				nodeNew.ImageIndex = 2;
 			}
 
 			node.Nodes.Insert( 0, nodeNew );
 
-			if ( itemInv is ItemContainer )
+			if ( itemInv != null && ( itemInv.Type & ItemType.Container ) > 0 )
 			{
-				int iChildIdx = ( itemInv as ItemContainer ).m_listItems.Capacity - 1;
-				while ( iChildIdx >= 0 )
+				var itemCont = itemInv.Container;
+				if ( itemCont != null )
 				{
-					if ( iChildIdx < ( itemInv as ItemContainer ).m_listItems.Count )
+					int iChildIdx = itemCont._listItems?.Count - 1 ?? 0;
+					while ( iChildIdx >= 0 )
 					{
-						UpdateInvTree_r( ( itemInv as ItemContainer ).m_listItems[ iChildIdx ], nodeNew );
-					}
-					else
-						UpdateInvTree_r( null, nodeNew );
+						if ( iChildIdx < itemCont._listItems?.Count )
+						{
+							UpdateInvTree_r( itemCont._listItems[ iChildIdx ], nodeNew );
+						}
+						else
+							UpdateInvTree_r( null, nodeNew );
 
-					iChildIdx--;
+						iChildIdx--;
+					}
 				}
 			}
 
@@ -483,7 +487,7 @@ namespace XenoRPGEditor
 			treeviewInv.Nodes.Add( nodeRoot );
 
 			// Build tree view from player inventory container....
-			UpdateInvTree_r( player.m_contBody, nodeRoot );
+			UpdateInvTree_r( character._contBody, nodeRoot );
 
 			// Recursively expand first few levels...
 			ExpandTreeNode_r( nodeRoot, 3 );
