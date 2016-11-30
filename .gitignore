@@ -1,12 +1,13 @@
 *.suo
 *.bak
 *.obj
+*.exe
 *.dll
 *.pdb
 .hg/
 .hg*
 *.config
-*.dat
+*.*dat
 [Oo]bj/
 [Rr]elease/
 [Pp]ackages/
