@@ -38,62 +38,118 @@ namespace XenoRPGEditor
 
 			// Load default character
 			character = charManager.LoadCharacterById( 1 );
+			PopulateCharInfo( character );
 
+			// Load stats...
+			var listCharStats = charManager.LoadCharacterStats( character.Id );
+			gridCharacterStats.DataSource = listCharStats;
+			AdjustGrid( gridCharacterStats );
+
+			// Load character inventory...
 			character._contBody = invManager.LoadContainer( character.ContBodyId );
-			/*
-			for ( int i = 0; i < player.m_listAttributes.Count; ++i )
-			{
-				textBox1.AppendText(
-					string.Format(
-						"{0}({1})={2}\n",
-						player.m_listAttributes[ i ].m_statInfo.m_strName,
-						player.m_listAttributes[ i ].m_statInfo.m_strAbbr,
-						player.m_listAttributes[ i ].m_statInfo.m_fLevelBase ) );
-			}
-			*/
-			DataGridView dgv;
+			RefreshTreeView();
+		}
 
-			dgv = gridAttributes;
-			dgv.DataSource = character._listAttributes;
+
+		//----------------------------------------------------------------------
+		private void PopulateCharInfo( CharacterBase character )
+		{
+			textNameFirst.Text = character.Name;
+			textNameLast.Text  = character.NameLast;
+			textAge.Text       = character.Age.ToString();
+			textXpPool.Text   = character.XPPool.ToString();
+
+			// Populate species and profession combo boxes
+			var listSpecies = charManager.GetSpeciesList();
+			comboRace.DataSource    = listSpecies;
+			comboRace.ValueMember   = "Id";
+			comboRace.DisplayMember = "Name";
+
+			var listProfs = charManager.GetProfessionList();
+			comboProfession.DataSource    = listProfs;
+			comboProfession.ValueMember   = "Id";
+			comboProfession.DisplayMember = "Name";
+
+			// Populate stat type filter combo box...
+			var listStatTypes = charManager.GetStatTypeList();
+			listStatTypes.Insert( 0, new XRpg.StatType() { Id = 0, Name = "All" } );
+			comboStatTypeFilter.DataSource    = listStatTypes;
+			comboStatTypeFilter.ValueMember   = "Id";
+			comboStatTypeFilter.DisplayMember = "Name";
+		}
+
+		//----------------------------------------------------------------------
+		private void AdjustGrid( DataGridView dgv )
+		{
 			try
 			{
-				dgv.Columns[ 0 ].HeaderText = "Name";
-				dgv.Columns[ 1 ].HeaderText = "Abbr";
-				dgv.Columns[ 2 ].HeaderText = "Desc";
-				dgv.Columns[ 3 ].HeaderText = "Lvl Base";
-				dgv.Columns[ 4 ].HeaderText = "Lvl Total";
-				dgv.Columns[ 5 ].HeaderText = "Score";
-				dgv.Columns[ 6 ].HeaderText = "XP";
+				//Hide columns...
+				dgv.Columns[ 0 ].Visible = false; // ID
+				dgv.Columns[ 3 ].Visible = false; // Desc
 
-				dgv.Columns[ 0 ].Width = 90;
-				dgv.Columns[ 1 ].Width = 50;
-				dgv.Columns[ 2 ].Width = 40;
-				dgv.Columns[ 3 ].Width = 40;
-				dgv.Columns[ 4 ].Width = 40;
-				dgv.Columns[ 5 ].Width = 40;
-				dgv.Columns[ 6 ].Width = 80;
+				// Set columns to read-only
+				dgv.Columns[ 1 ].ReadOnly = true;
+				dgv.Columns[ 2 ].ReadOnly = true;
+				dgv.Columns[ 3 ].ReadOnly = true;
 
-				dgv = gridSkills;
-				dgv.DataSource = character._listSkills;
-				dgv.Columns[ 0 ].HeaderText = "Name";
-				dgv.Columns[ 1 ].HeaderText = "Abbr";
-				dgv.Columns[ 2 ].HeaderText = "Desc";
-				dgv.Columns[ 3 ].HeaderText = "Lvl Base";
-				dgv.Columns[ 4 ].HeaderText = "Lvl Total";
-				dgv.Columns[ 5 ].HeaderText = "Score";
-				dgv.Columns[ 6 ].HeaderText = "XP";
+				// Set read-only column colors
+				Color colorPhysAttr = Color.FromArgb( 0xFF, 0xD0, 0xD0 );
+				Color colorMentAttr = Color.FromArgb( 0xFF, 0xD0, 0xFF );
+				Color colorSpecAttr = Color.FromArgb( 0xD0, 0xD0, 0xFF );
+				Color colorResists  = Color.FromArgb( 0xD0, 0xFF, 0xD0 );
+				Color colorSkills   = Color.FromArgb( 0xFF, 0xF0, 0xD0 );
+				Color colorInvalid  = Color.FromArgb( 0xA0, 0xA0, 0xA0 );
 
-				dgv.Columns[ 0 ].Width = 90;
-				dgv.Columns[ 1 ].Width = 50;
+				// Set tooltips...
+				for ( int i = 0; i < dgv.Rows.Count; ++i )
+				{
+					var row = dgv.Rows[i];
+					const int iTypeColIdx = 4;
+					var strType = row.Cells[iTypeColIdx].Value.ToString();
+					switch ( strType )
+					{
+						case "AttribPhysical": row.Cells[3].Style.BackColor = colorPhysAttr; break;
+						case "AttribMental " : row.Cells[3].Style.BackColor = colorMentAttr; break;
+						case "AttribSpecial" : row.Cells[3].Style.BackColor = colorSpecAttr; break;
+						case "Resistance"    : row.Cells[3].Style.BackColor = colorResists;  break;
+						case "Skill"         : row.Cells[3].Style.BackColor = colorSkills;   break;
+						case "Special"       : row.Cells[3].Style.BackColor = colorInvalid;  break;
+						default              : row.Cells[3].Style.BackColor = colorInvalid;  break;
+					}
+				}
+
+				//dgv.Columns[ 1 ].DefaultCellStyle.BackColor = colorPhysAttr;
+				//dgv.Columns[ 2 ].DefaultCellStyle.BackColor = colorPhysAttr;
+				//dgv.Columns[ 3 ].DefaultCellStyle.BackColor = colorPhysAttr;
+
+				dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb( 0xD0, 0xD0, 0xFF );
+
+				//dgv.Columns[ 0 ].HeaderText = "Name";
+				//dgv.Columns[ 1 ].HeaderText = "Abbr";
+				//dgv.Columns[ 2 ].HeaderText = "Desc";
+				//dgv.Columns[ 3 ].HeaderText = "Lvl Base";
+				//dgv.Columns[ 4 ].HeaderText = "Lvl Total";
+				//dgv.Columns[ 5 ].HeaderText = "Score";
+				//dgv.Columns[ 6 ].HeaderText = "XP";
+
+				// Set column widths....
+				dgv.Columns[ 0 ].Width =  0;
+				dgv.Columns[ 1 ].Width = 90;
 				dgv.Columns[ 2 ].Width = 50;
 				dgv.Columns[ 3 ].Width = 40;
 				dgv.Columns[ 4 ].Width = 40;
 				dgv.Columns[ 5 ].Width = 40;
-				dgv.Columns[ 6 ].Width = 80;
+				dgv.Columns[ 6 ].Width = 40;
 			}
 			catch
 			{
 				; //IGNORE
+			}
+
+			// Set tooltips...
+			for ( int i = 0; i < dgv.Rows.Count; ++i )
+			{
+				dgv.Rows[i].Cells[1].ToolTipText = dgv.Rows[i].Cells[3].Value.ToString();
 			}
 		}
 
@@ -549,6 +605,12 @@ namespace XenoRPGEditor
 				treeviewInv.SelectedNode.ExpandAll();
 			else
 				treeviewInv.Nodes[ 0 ].ExpandAll();
+		}
+
+		private void comboStatTypeFilter_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			//TODO: Filter stat list based on selected filter
+			//gridCharacterStats
 		}
 	}
 }

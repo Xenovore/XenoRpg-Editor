@@ -6,8 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using XRpg;
-using Xrpg.Core;
-
 
 namespace XenoRPGEditor
 {
@@ -61,10 +59,10 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		void LoadAllStats()
 		{
-			Dictionary<int, StatBase> stats = FormMain.CharManager.LoadAllStats();
+			Dictionary<int, Stat> stats = FormMain.CharManager.LoadAllStats();
 
 			//NOTE: Without the BindingSource, gridview is not editable.
-			var blist = new FilterList<StatBase>( stats.Values.ToList() );
+			var blist = new FilterList<Stat>( stats.Values.ToList() );
 
 			bsStats = new BindingSource { DataSource = blist };
 			gridview.DataSource = bsStats;
@@ -115,7 +113,7 @@ namespace XenoRPGEditor
 		{
 			var list = ( (BindingSource)gridview.DataSource ).List;
 
-			int result = FormMain.CharManager.SaveMasterAttribs( (List<StatBase>)list );
+			int result = FormMain.CharManager.SaveMasterAttribs( (List<Stat>)list );
 
 			return ( result != 0 );
 		}
