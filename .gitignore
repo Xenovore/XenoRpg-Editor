@@ -6,6 +6,7 @@
 .hg/
 .hg*
 *.config
+*.dat
 [Oo]bj/
 [Rr]elease/
 [Pp]ackages/
