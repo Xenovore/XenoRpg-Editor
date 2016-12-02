@@ -305,12 +305,12 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		protected override void OnPaint( PaintEventArgs pe )
+		protected override void OnPaint( PaintEventArgs e )
 		{
-			Graphics grfx = pe.Graphics;
+			Graphics grfx = e.Graphics;
 
 			// Call base paint first; everything here should paint over any default rendering...
-			base.OnPaint( pe );
+			base.OnPaint( e );
 
 			Rectangle rectClient = this.ClientRectangle;
 
