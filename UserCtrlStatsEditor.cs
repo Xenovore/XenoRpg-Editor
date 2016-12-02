@@ -59,10 +59,10 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		void LoadAllStats()
 		{
-			Dictionary<int, Stat> stats = FormMain.CharManager.LoadAllStats();
+			Dictionary<int, StatBase> stats = FormMain.CharManager.LoadAllStats();
 
 			//NOTE: Without the BindingSource, gridview is not editable.
-			var blist = new FilterList<Stat>( stats.Values.ToList() );
+			var blist = new FilterList<StatBase>( stats.Values.ToList() );
 
 			bsStats = new BindingSource { DataSource = blist };
 			gridview.DataSource = bsStats;
