@@ -14,3 +14,5 @@
 [Pp]roperties/
 bin/Debug/Dapper.xml
 bin/Debug/System.Data.SQLite.xml
+bin/Debug/XenoRPGEditor.vshost.exe.manifest
+XenoRPGEditor.csproj.DotSettings

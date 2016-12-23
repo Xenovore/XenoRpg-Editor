@@ -226,7 +226,7 @@ namespace XenoRPGEditor
 		public int GetItemImgIdx( Item itemInv )
 		{
 			if ( ( itemInv.Type & ItemType.ContSlot  ) == ItemType.ContSlot ) return 0;
-			if ( ( itemInv.Type & ItemType.Container )  > 0                    ) return 1;
+			if ( ( itemInv.Type & ItemType.Container )  > 0                 ) return 1;
 			if ( ( itemInv.Type & ItemType.Coin      ) == ItemType.Coin     ) return 5;
 			if ( ( itemInv.Type & ItemType.Gem       ) == ItemType.Gem      ) return 6;
 			if ( ( itemInv.Type & ItemType.Herb      ) == ItemType.Herb     ) return 7;
@@ -298,8 +298,7 @@ namespace XenoRPGEditor
 
 			foreach ( TreeNode node in nodeRoot.Nodes )
 			{
-				if ( m_iDepthCurr < iDepth &&
-					 node.Nodes.Count > 0 )
+				if ( m_iDepthCurr < iDepth && node.Nodes.Count > 0 )
 				{
 					ExpandTreeNode_r( node, iDepth );
 				}
