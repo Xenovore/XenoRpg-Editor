@@ -32,7 +32,9 @@ namespace XenoRPGEditor
 		Point _clickLoc; // Used with mouse dragging
 
 		//protected string _text;
-		protected bool _movable;
+		protected bool   _useImageSize;
+		protected bool   _useBgImageSize;
+		protected bool   _isMovable;
 		protected float  _fUiScale;
 		protected string _strItemImageFilename;
 		protected string _strBackgroundFilename;
@@ -60,11 +62,29 @@ namespace XenoRPGEditor
 		*/
 
 		//----------------------------------------------------------------------
+		[Category("Appearance"), Description( "Use Image Size" ), DefaultValue( false )]
+		public bool UseImageSize
+		{
+			get { return _useImageSize; }
+			set { _useImageSize = value; }
+		}
+
+
+		//----------------------------------------------------------------------
+		[Category("Appearance"), Description( "Use BG Image Size" ), DefaultValue( true )]
+		public bool UseBgImageSize
+		{
+			get { return _useBgImageSize; }
+			set { _useBgImageSize = value; }
+		}
+
+
+		//----------------------------------------------------------------------
 		[Category("Appearance"), Description( "Movable" ), DefaultValue( false )]
 		public bool Movable
 		{
-			get { return _movable; }
-			set { _movable = value; }
+			get { return _isMovable; }
+			set { _isMovable = value; }
 		}
 
 
@@ -114,8 +134,19 @@ namespace XenoRPGEditor
 				if ( !String.IsNullOrWhiteSpace( _strItemImageFilename ) )
 				{
 					_bmpItemImage = new Bitmap( _strItemImageFilename );
-					this.Width = _bmpItemImage.Width;
-					this.Height = _bmpItemImage.Height;
+					Color chromakey = _bmpItemImage.GetPixel( 0, 0 );
+
+					//TODO: Remove magenta assumption if we want another color
+					if ( chromakey.ToArgb() == Color.Magenta.ToArgb() )
+					{
+						_bmpItemImage.MakeTransparent( chromakey );
+					}
+
+					if ( _useImageSize )
+					{
+						this.Width = _bmpItemImage.Width;
+						this.Height = _bmpItemImage.Height;
+					}
 
 					if ( DesignMode ) this.Invalidate();
 				}
@@ -138,8 +169,11 @@ namespace XenoRPGEditor
 				if ( !String.IsNullOrWhiteSpace( _strBackgroundFilename ) )
 				{
 					_bmpItemImage = new Bitmap( _strBackgroundFilename );
-					this.Width = _bmpItemImage.Width;
-					this.Height = _bmpItemImage.Height;
+					if ( _useBgImageSize )
+					{
+						this.Width = _bmpItemImage.Width;
+						this.Height = _bmpItemImage.Height;
+					}
 
 					if ( DesignMode ) this.Invalidate();
 				}
@@ -179,9 +213,11 @@ namespace XenoRPGEditor
 		protected override void OnPaint( PaintEventArgs pe )
 		{
 			Graphics grfx = pe.Graphics;
+			grfx.InterpolationMode = InterpolationMode.Bicubic;
 
 			// Call base paint first; everything here should paint over any default rendering...
-			base.OnPaint( pe );
+			//! Forget base paint; do not want any default rendering!
+			//base.OnPaint( pe );
 
 			Rectangle rectClient = this.ClientRectangle;
 
@@ -192,13 +228,13 @@ namespace XenoRPGEditor
 			if ( _bmpItemImage != null ) grfx.DrawImage( _bmpItemImage, rectClient  );
 
 			//----- Render text overlay
-			var font = new Font(
-				this.Font.FontFamily,
-				this.Font.Size,
-				this.Font.Style,
-				GraphicsUnit.Pixel );
+			//var font = new Font(
+			//	this.Font.FontFamily,
+			//	this.Font.Size,
+			//	this.Font.Style,
+			//	GraphicsUnit.Pixel );
 
-			SizeF sizeText = grfx.MeasureString( this.Text, font, rectClient.Width - this.Padding.Horizontal );
+			SizeF sizeText = grfx.MeasureString( this.Text, this.Font, rectClient.Width - this.Padding.Horizontal );
 
 			Point ptTextPos = new Point( this.Padding.Left, this.Padding.Top );
 
@@ -225,14 +261,16 @@ namespace XenoRPGEditor
 
 			var solidBrush = new SolidBrush( this.ForeColor );
 			grfx.TextRenderingHint = TextRenderingHint.AntiAlias;
-			grfx.DrawString( this.Text, font, solidBrush, ptTextPos );
+			grfx.DrawString( this.Text, this.Font, solidBrush, ptTextPos );
+
+			var pen = new Pen( Color.Magenta );
+			grfx.DrawRectangle( pen, rectClient );
 		}
 
 
 		protected override void OnMouseDown( MouseEventArgs e )
 		{
-			//TODO: Check if click is on title bar, and isMovable is set, and moveOnlyWithTitleBar flag is set
-
+			//TODO: Check Movable here
 			//TODO: Check if click is on other border rectangles, and isResizable flag is set
 
 			this.Capture = true;
@@ -245,7 +283,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		protected override void OnMouseMove( MouseEventArgs e )
 		{
-			if ( Movable )
+			if ( _isMovable )
 			{
 				// e.X, e.Y is current mouse position
 				// New control position is at current control position + current mouse position - original click position

@@ -75,7 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FilterList.cs" />
+    <Compile Include="XRpgUtils\FilterList.cs" />
     <Compile Include="FormEditCharacter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,19 +106,19 @@
     <Compile Include="FormEditItemType.Designer.cs">
       <DependentUpon>FormEditItemType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Misc\ImageComboBox.cs">
+    <Compile Include="XRpgCustom\ImageComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Misc\InvContainerControl.cs">
+    <Compile Include="XRpgCustom\InvContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Misc\InvContainerControl.Designer.cs">
+    <Compile Include="XRpgCustom\InvContainerControl.Designer.cs">
       <DependentUpon>InvContainerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Misc\InvItemControl.cs">
+    <Compile Include="XRpgCustom\InvItemControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Misc\InvItemControl.Designer.cs">
+    <Compile Include="XRpgCustom\InvItemControl.Designer.cs">
       <DependentUpon>InvItemControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserCtrlCharactersEditor.cs">
@@ -154,7 +154,7 @@
     <EmbeddedResource Include="FormEditItemType.resx">
       <DependentUpon>FormEditItemType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Misc\InvContainerControl.resx">
+    <EmbeddedResource Include="XRpgCustom\InvContainerControl.resx">
       <DependentUpon>InvContainerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
