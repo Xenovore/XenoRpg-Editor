@@ -480,7 +480,6 @@
 			this.invContainerSlots.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
 			this.invContainerSlots.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
 			this.invContainerSlots.Location = new System.Drawing.Point(0, 0);
-			this.invContainerSlots.Movable = true;
 			this.invContainerSlots.Name = "invContainerSlots";
 			this.invContainerSlots.Size = new System.Drawing.Size(367, 558);
 			this.invContainerSlots.TabIndex = 25;

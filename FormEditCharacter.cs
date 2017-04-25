@@ -51,6 +51,8 @@ namespace XenoRPGEditor
 
 			// Load character inventory...
 			_character._contBody = invManager.LoadContainer( _character.ContBodyId );
+
+			RefreshSlotView();
 			RefreshTreeView();
 		}
 
@@ -182,6 +184,8 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void Form1_Shown( object sender, EventArgs e )
 		{
+			//TODO: Remove... doesn't look like this event is hooked up
+			RefreshSlotView();
 			RefreshTreeView();
 		}
 
@@ -305,6 +309,43 @@ namespace XenoRPGEditor
 			}
 
 			m_iDepthCurr--;
+		}
+
+
+		//----------------------------------------------------------------------
+		private void RefreshSlotView()
+		{
+			const int c_slotExtent = 32;
+
+			if ( invContainerSlots.Controls.Count > 0 ) return;
+
+			//TODO: Instead of this; need something to recurse through all containers
+			var listSlots = _character._contBody.Container._listItems;
+			int count = 0;
+			int offsetX = 0;
+			int offsetY = 0;
+			foreach( Item item in listSlots )
+			{
+				//TODO: REMOVE; temporary
+				offsetX = count % 5 * ( c_slotExtent + 4 );
+				if ( count % 5 == 0 ) offsetY += c_slotExtent + 4;
+
+				var ctrlSlot = new InvItemControl
+				{
+					Text      = item.Name,
+					Location  = new Point( (int)item.LocationX + offsetX, (int)item.LocationY + offsetY ),
+					Width     = (int)item.SizeW * c_slotExtent,
+					Height    = (int)item.SizeH * c_slotExtent,
+					Movable   = true,
+					Font      = new Font( "Calibri", 8 ),
+					BackgroundFilename = "images/InvSlot.png",
+					ItemImageFilename = "images/InvGem.png",
+				};
+
+				invContainerSlots.Controls.Add( ctrlSlot );
+
+				count++;
+			}
 		}
 
 
