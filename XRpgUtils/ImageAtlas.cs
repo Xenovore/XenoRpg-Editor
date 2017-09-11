@@ -54,20 +54,20 @@ namespace XRpgUtils
 			// Paranoia...
 			if ( _bitmap == null ) MessageBox.Show( "No bitmap loaded." );
 
-			//get the separator color
+			// Get the separator color; magenta is preferred
 			Color colorSep = _bitmap.GetPixel( 0, 0 );
 			if ( colorSep != Color.FromArgb( 0, Color.Magenta ) )
 				MessageBox.Show( "Warning: Separator color was not magenta." );
 
-			//now loop through all the scroll pieces, and find the bounding rectangle for each piece in each state
+			// Now loop through pieces, and find the bounding rectangle for each piece...
 			int iPosY = 0;
 
-			// ascertain the height of this row...
 			_listRects.Clear();
 			while ( iPosY < _bitmap.Height )
 			{
-				// Skip any seperator colors
+				// Determine the height of this row
 				Color color = _bitmap.GetPixel( 0, iPosY );
+				// Skip any seperator colors
 				if ( color == colorSep )
 				{
 					iPosY++;
@@ -113,7 +113,8 @@ namespace XRpgUtils
 				}
 			}
 
-			//TODO: Save rect list to XML file with same name as parent image
+			//TODO: Save rect list to XML file with same name as parent image; 
+			// then we can just load that instead of doing all this work every time.
 
 			return _listRects.Count;
 		}
