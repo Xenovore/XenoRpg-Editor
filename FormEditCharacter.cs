@@ -333,7 +333,7 @@ namespace XenoRPGEditor
 				var ctrlSlot = new InvItemControl
 				{
 					Text      = item.Name,
-					Location  = new Point( (int)item.LocationX + offsetX, (int)item.LocationY + offsetY ),
+					Location  = new Point( (int)item.PosX + offsetX, (int)item.PosY + offsetY ),
 					Width     = (int)item.SizeW * c_slotExtent,
 					Height    = (int)item.SizeH * c_slotExtent,
 					Movable   = true,

@@ -65,9 +65,9 @@ namespace XenoRPGEditor
 			var blist = new FilterList<StatBase>( stats.Values.ToList() );
 
 			bsStats = new BindingSource { DataSource = blist };
-			gridview.DataSource = bsStats;
+			gvStatsAll.DataSource = bsStats;
 
-//			if ( bsStats.SupportsFiltering ) bsStats.Filter = "Type='Skill'";
+			//if ( bsStats.SupportsFiltering ) bsStats.Filter = "Type='Skill'";
 		}
 
 
@@ -86,7 +86,7 @@ namespace XenoRPGEditor
 
 			LoadAllStats();
 
-			SetColWidths( gridview, m_iColWidths );
+			SetColWidths( gvStatsAll, m_iColWidths );
 		}
 
 		//----------------------------------------------------------------------
@@ -111,7 +111,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private bool SaveChanges()
 		{
-			var list = ( (BindingSource)gridview.DataSource ).List;
+			var list = ( (BindingSource)gvStatsAll.DataSource ).List;
 
 			int result = FormMain.CharManager.SaveMasterAttribs( (List<Stat>)list );
 
@@ -177,6 +177,17 @@ namespace XenoRPGEditor
 
 			if ( result == DialogResult.Cancel )
 				e.Cancel = true;
+		}
+
+
+		//----------------------------------------------------------------------
+		private void comboFilterBy_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			// Filter grid by
+			string strFilter = comboFilterBy.SelectedText;
+
+			//gvStatsAll.Filter
+
 		}
 	}
 }

@@ -28,11 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.gridview = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
+			this.comboSearchBy = new System.Windows.Forms.ComboBox();
+			this.lblSearch = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.gridview)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -40,33 +42,33 @@
 			// 
 			this.gridview.AllowUserToOrderColumns = true;
 			this.gridview.AllowUserToResizeRows = false;
-			dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-			this.gridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+			this.gridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gridview.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.gridview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.gridview.EnableHeadersVisualStyles = false;
 			this.gridview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.gridview.Location = new System.Drawing.Point(4, 40);
+			this.gridview.Location = new System.Drawing.Point(8, 32);
 			this.gridview.Margin = new System.Windows.Forms.Padding(4);
 			this.gridview.MultiSelect = false;
 			this.gridview.Name = "gridview";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.gridview.RowHeadersWidth = 24;
 			this.gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.gridview.Size = new System.Drawing.Size(562, 506);
+			this.gridview.Size = new System.Drawing.Size(620, 400);
 			this.gridview.TabIndex = 6;
 			// 
 			// label1
@@ -79,14 +81,39 @@
 			this.label1.TabIndex = 7;
 			this.label1.Text = "Characters";
 			// 
+			// comboSearchBy
+			// 
+			this.comboSearchBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.comboSearchBy.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.comboSearchBy.FormattingEnabled = true;
+			this.comboSearchBy.Location = new System.Drawing.Point(67, 443);
+			this.comboSearchBy.MaxDropDownItems = 5;
+			this.comboSearchBy.Name = "comboSearchBy";
+			this.comboSearchBy.Size = new System.Drawing.Size(241, 26);
+			this.comboSearchBy.TabIndex = 22;
+			// 
+			// lblSearch
+			// 
+			this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.lblSearch.AutoSize = true;
+			this.lblSearch.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblSearch.Location = new System.Drawing.Point(8, 446);
+			this.lblSearch.Name = "lblSearch";
+			this.lblSearch.Size = new System.Drawing.Size(53, 18);
+			this.lblSearch.TabIndex = 21;
+			this.lblSearch.Text = "Search:";
+			this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// UserCtrlCharactersEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.comboSearchBy);
+			this.Controls.Add(this.lblSearch);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.gridview);
 			this.Name = "UserCtrlCharactersEditor";
-			this.Size = new System.Drawing.Size(570, 550);
+			this.Size = new System.Drawing.Size(640, 480);
 			this.Load += new System.EventHandler(this.Editor_Load);
 			((System.ComponentModel.ISupportInitialize)(this.gridview)).EndInit();
 			this.ResumeLayout(false);
@@ -98,5 +125,7 @@
 
 		private System.Windows.Forms.DataGridView gridview;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox comboSearchBy;
+		private System.Windows.Forms.Label lblSearch;
 	}
 }

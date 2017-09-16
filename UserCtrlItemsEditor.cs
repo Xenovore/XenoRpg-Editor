@@ -67,9 +67,9 @@ namespace XenoRPGEditor
 				gv.Columns["SizeW"      ].DisplayIndex = 8;
 				gv.Columns["SizeH"      ].DisplayIndex = 9;
 				gv.Columns["Location"   ].DisplayIndex = 10;
-				gv.Columns["LocationX"  ].DisplayIndex = 11;
-				gv.Columns["LocationY"  ].DisplayIndex = 12;
-				gv.Columns["LocationZ"  ].DisplayIndex = 13;
+				gv.Columns["PosX"       ].DisplayIndex = 11;
+				gv.Columns["PosY"       ].DisplayIndex = 12;
+				gv.Columns["PosZ"       ].DisplayIndex = 13;
 				//gv.Columns["Description"].DisplayIndex = 15;
 			}
 			catch { } // Don't care
@@ -95,9 +95,9 @@ namespace XenoRPGEditor
 				gv.Columns["SizeW"      ].Width = 42;
 				gv.Columns["SizeH"      ].Width = 40;
 				gv.Columns["Location"   ].Width = 60;
-				gv.Columns["LocationX"  ].Width = 50;
-				gv.Columns["LocationY"  ].Width = 50;
-				gv.Columns["LocationZ"  ].Width = 50;
+				gv.Columns["PosX"       ].Width = 50;
+				gv.Columns["PosY"       ].Width = 50;
+				gv.Columns["PosZ"       ].Width = 50;
 			}
 			catch { } // Don't care
 
@@ -119,9 +119,7 @@ namespace XenoRPGEditor
 				gv.Columns["QuantityCap"].HeaderText = "QtyCap";
 				gv.Columns["IsEnabled"  ].HeaderText = "Enabled";
 				gv.Columns["IconIndex"  ].HeaderText = "Icon";
-				gv.Columns["LocationX"  ].HeaderText = "Loc-X";
-				gv.Columns["LocationY"  ].HeaderText = "Loc-Y";
-				gv.Columns["LocationZ"  ].HeaderText = "Loc-Z";
+				gv.Columns["Location"   ].HeaderText = "Loc";
 			}
 			catch { } // Don't care
 		}
