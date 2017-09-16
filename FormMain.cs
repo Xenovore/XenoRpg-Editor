@@ -55,7 +55,6 @@ namespace XenoRPGEditor
 			InitializeComponent();
 
 			CharManager = new CharacterManager();
-			CharManager.InitDB();
 
 			var ucCharacters = new UserCtrlCharactersEditor();
 			AddCtrlTab( ucCharacters, "Characters" );
@@ -65,7 +64,6 @@ namespace XenoRPGEditor
 
 
 			InvManager = new InventoryManager();
-			InvManager.InitDB();
 
 			var ucItems = new UserCtrlItemsEditor();
 			AddCtrlTab( ucItems, "Items" );
