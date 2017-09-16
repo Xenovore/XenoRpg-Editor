@@ -95,7 +95,7 @@ namespace XenoRPGEditor
 			m_bAttribsModified = b;
 			label1.ForeColor = b ? Color.Red : Color.Black;
 
-			button1.Enabled = b;
+			buttSaveList.Enabled = b;
 
 		}
 

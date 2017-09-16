@@ -13,27 +13,6 @@ namespace XenoRPGEditor
 {
 	public partial class UserCtrlItemsEditor: UserControl
 	{
-
-		int[] m_iColWidths =
-		{
-			50, // krpg_items.id,
-			100, // krpg_items.name,
-			50, // krpg_items.type,
-			55, // krpg_items.icon_idx,
-			60, // krpg_items.disabled,
-			50, // krpg_items.weight,
-			50, // krpg_items.size_w,
-			50,	// krpg_items.size_h,
-			40, // krpg_items.quantity,
-			45,	// krpg_items.quantity_cap,
-			45,	// krpg_items.id_container,
-			45,	// krpg_items_continfo.item_total,
-			45,	// krpg_items_continfo.item_cap,
-			45,	// krpg_items_continfo.volume_total,
-			45,	// krpg_items_continfo.volume_cap,
-			    // krpg_items.desc fills rest of grid
-		};
-
 		bool m_bModified = false;
 
 		//----------------------------------------------------------------------
@@ -44,41 +23,15 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		private void SetColWidths( DataGridView gv )
+		private void Editor_Load( object sender, EventArgs e )
 		{
-			if ( gv.Columns.Count == 0 ) return;
+			LoadItemsTable();
 
-			// Use shortest size so we don't run into problems if the number of grid columns
-			// doesn't match the number of elements...
-			int iColMax = Math.Min( gv.Columns.Count, m_iColWidths.Length );
+			SetGridColumnOrder( gridview );
+			SetGridColumnWidths( gridview );
+			SetGridHeaderText( gridview );
 
-			for ( int i = 0; i < iColMax; ++i )
-			{
-				gv.Columns[ i ].Width = m_iColWidths[ i ];
-			}
-
-			// Set last column to fill...
-			gv.Columns[ gv.Columns.Count - 1 ].AutoSizeMode =
-					DataGridViewAutoSizeColumnMode.Fill;
-		}
-
-
-		//----------------------------------------------------------------------
-		private void InitGrid()
-		{
-			if ( gridview.Columns.Count == 0 ) return;
-
-			/*var column = new DataGridViewComboBoxColumn();
-			column.HeaderText = "Type";
-			column.ToolTipText = "";
-			column.DataSource = dictItemTypeNames;
-			column.ValueMember = "Key";
-			column.DisplayMember = "Value";
-			column.DataPropertyName = "type";
-
-			gridview.Columns[ 3 ].Visible = false;
-			gridview.Columns.Insert( 3, column );
-			 */
+			gridview.Update();
 		}
 
 
@@ -93,16 +46,84 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		private void Editor_Load( object sender, EventArgs e )
+		private void SetGridColumnOrder( DataGridView gv )
 		{
-			LoadItemsTable();
-			InitGrid();
-			SetColWidths( gridview );
+			if ( gv.Columns.Count == 0 ) return;
 
-			//dataGridView1.Columns[ 2 ].HeaderText = "Type";
-			//dataGridView1.Columns[ 3 ].HeaderText = "Wt";
-			//dataGridView1.Columns[ 6 ].HeaderText = "Qty";
-			//dataGridView1.Columns[ 7 ].HeaderText = "Qty Cap";
+			// Throws exception if column name is wrong...
+			try
+			{
+				gv.Columns["NestLevel"   ].Visible = false;
+				gv.Columns["ParentContId"].Visible = false;
+
+				gv.Columns["IsEnabled"  ].DisplayIndex = 0;
+				gv.Columns["Id"         ].DisplayIndex = 1;
+				gv.Columns["Name"       ].DisplayIndex = 2;
+				gv.Columns["Type"       ].DisplayIndex = 3;
+				gv.Columns["Weight"     ].DisplayIndex = 4;
+				gv.Columns["Quantity"   ].DisplayIndex = 5;
+				gv.Columns["QuantityCap"].DisplayIndex = 6;
+				gv.Columns["IconIndex"  ].DisplayIndex = 7;
+				gv.Columns["SizeW"      ].DisplayIndex = 8;
+				gv.Columns["SizeH"      ].DisplayIndex = 9;
+				gv.Columns["Location"   ].DisplayIndex = 10;
+				gv.Columns["LocationX"  ].DisplayIndex = 11;
+				gv.Columns["LocationY"  ].DisplayIndex = 12;
+				gv.Columns["LocationZ"  ].DisplayIndex = 13;
+				//gv.Columns["Description"].DisplayIndex = 15;
+			}
+			catch { } // Don't care
+		}
+
+
+		//----------------------------------------------------------------------
+		private void SetGridColumnWidths( DataGridView gv )
+		{
+			if ( gv.Columns.Count == 0 ) return;
+
+			// Throws exception if column name is wrong...
+			try
+			{
+				gv.Columns["Id"         ].Width = 40;
+				gv.Columns["Name"       ].Width = 130;
+				gv.Columns["Description"].Width = 250;
+				gv.Columns["Weight"     ].Width = 40;
+				gv.Columns["Quantity"   ].Width = 40;
+				gv.Columns["QuantityCap"].Width = 45;
+				gv.Columns["IsEnabled"  ].Width = 55;
+				gv.Columns["IconIndex"  ].Width = 40;
+				gv.Columns["SizeW"      ].Width = 42;
+				gv.Columns["SizeH"      ].Width = 40;
+				gv.Columns["Location"   ].Width = 60;
+				gv.Columns["LocationX"  ].Width = 50;
+				gv.Columns["LocationY"  ].Width = 50;
+				gv.Columns["LocationZ"  ].Width = 50;
+			}
+			catch { } // Don't care
+
+			// Set last column to fill...
+			gv.Columns[ gv.Columns.Count - 1 ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+		}
+
+
+		//----------------------------------------------------------------------
+		private void SetGridHeaderText( DataGridView gv )
+		{
+			if ( gv.Columns.Count == 0 ) return;
+
+			// Throws exception if column name is wrong...
+			try
+			{
+				gv.Columns["Weight"     ].HeaderText = "Wt";
+				gv.Columns["Quantity"   ].HeaderText = "Qty";
+				gv.Columns["QuantityCap"].HeaderText = "QtyCap";
+				gv.Columns["IsEnabled"  ].HeaderText = "Enabled";
+				gv.Columns["IconIndex"  ].HeaderText = "Icon";
+				gv.Columns["LocationX"  ].HeaderText = "Loc-X";
+				gv.Columns["LocationY"  ].HeaderText = "Loc-Y";
+				gv.Columns["LocationZ"  ].HeaderText = "Loc-Z";
+			}
+			catch { } // Don't care
 		}
 
 
@@ -215,6 +236,11 @@ namespace XenoRPGEditor
 
 			var result = form.ShowDialog();
 			SetModified( ( result == DialogResult.Yes ) );
+		}
+
+		private void lblMasterItemList_Click( object sender, EventArgs e )
+		{
+
 		}
 	}
 }
