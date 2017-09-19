@@ -475,7 +475,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.invContainerSlots.BackgroundImageFilename = null;
-			this.invContainerSlots.FrameImageFilename = "images/rpginvicons.png";
+			this.invContainerSlots.FrameImageFilename = "images/rpginvframe.png";
 			this.invContainerSlots.GradientAngle = 55;
 			this.invContainerSlots.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
 			this.invContainerSlots.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
@@ -539,7 +539,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.invContainerSelected.BackgroundImageFilename = null;
-			this.invContainerSelected.FrameImageFilename = "images/rpginvicons.png";
+			this.invContainerSelected.FrameImageFilename = "images/rpginvframe.png";
 			this.invContainerSelected.GradientAngle = 55;
 			this.invContainerSelected.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
 			this.invContainerSelected.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
