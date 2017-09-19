@@ -67,7 +67,7 @@ namespace XenoRPGEditor
 			//TODO: Wrap in try...catch
 			uint iTypeVal = Convert.ToUInt32( txtType.Text, 16 );
 
-			pnlContInfo.Enabled = ( ( iTypeVal & (uint)ItemType.Container ) > 0 );
+			pnlContInfo.Enabled = ( ( iTypeVal & (uint)ItemTypeEnum.Container ) > 0 );
 		}
 
 

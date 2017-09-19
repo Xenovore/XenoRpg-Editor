@@ -37,6 +37,7 @@
 			this.buttOk = new System.Windows.Forms.Button();
 			this.buttCancel = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// listviewTypes
@@ -46,17 +47,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.listviewTypes.CausesValidation = false;
-			this.listviewTypes.CheckBoxes = true;
 			this.listviewTypes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
             this.columnHeaderValue});
 			this.listviewTypes.FullRowSelect = true;
 			this.listviewTypes.GridLines = true;
 			this.listviewTypes.HideSelection = false;
-			this.listviewTypes.Location = new System.Drawing.Point(8, 31);
+			this.listviewTypes.Location = new System.Drawing.Point(8, 32);
 			this.listviewTypes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.listviewTypes.Name = "listviewTypes";
-			this.listviewTypes.Size = new System.Drawing.Size(254, 343);
+			this.listviewTypes.Size = new System.Drawing.Size(320, 368);
 			this.listviewTypes.SmallImageList = this.imagelist;
 			this.listviewTypes.TabIndex = 0;
 			this.listviewTypes.UseCompatibleStateImageBehavior = false;
@@ -66,7 +66,7 @@
 			// columnHeaderName
 			// 
 			this.columnHeaderName.Text = "Name";
-			this.columnHeaderName.Width = 140;
+			this.columnHeaderName.Width = 160;
 			// 
 			// columnHeaderValue
 			// 
@@ -98,7 +98,7 @@
 			// 
 			this.buttOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttOk.Location = new System.Drawing.Point(8, 382);
+			this.buttOk.Location = new System.Drawing.Point(8, 407);
 			this.buttOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttOk.Name = "buttOk";
 			this.buttOk.Size = new System.Drawing.Size(80, 26);
@@ -111,7 +111,7 @@
 			// 
 			this.buttCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttCancel.Location = new System.Drawing.Point(94, 382);
+			this.buttCancel.Location = new System.Drawing.Point(94, 407);
 			this.buttCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttCancel.Name = "buttCancel";
 			this.buttCancel.Size = new System.Drawing.Size(80, 26);
@@ -123,18 +123,32 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Location = new System.Drawing.Point(5, 9);
+			this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(8, 8);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(75, 18);
+			this.label1.Size = new System.Drawing.Size(76, 18);
 			this.label1.TabIndex = 2;
 			this.label1.Text = "Item Types";
 			// 
-			// FormTypeEdit
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+			this.label2.Location = new System.Drawing.Point(130, 11);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(193, 15);
+			this.label2.TabIndex = 3;
+			this.label2.Text = "(Hold \'Ctrl\' to select multiple types.)";
+			// 
+			// FormEditItemType
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(270, 416);
+			this.ClientSize = new System.Drawing.Size(335, 441);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttCancel);
 			this.Controls.Add(this.buttOk);
@@ -145,7 +159,10 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(250, 200);
-			this.Name = "FormTypeEdit";
+			this.Name = "FormEditItemType";
+			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Choose Item Type(s)...";
 			this.TopMost = true;
 			this.Activated += new System.EventHandler(this.FormTypeEdit_Activated);
@@ -164,5 +181,6 @@
 		private System.Windows.Forms.ImageList imagelist;
 		private System.Windows.Forms.ColumnHeader columnHeaderName;
 		private System.Windows.Forms.ColumnHeader columnHeaderValue;
+		private System.Windows.Forms.Label label2;
 	}
 }

@@ -36,7 +36,6 @@
 			this.mnuitmExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.dBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuitemStatEditor = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuitemItemEditor = new System.Windows.Forms.ToolStripMenuItem();
 			this.charDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabCtrlMain = new System.Windows.Forms.TabControl();
 			this.menuMain.SuspendLayout();
@@ -50,7 +49,7 @@
             this.charDetailsToolStripMenuItem});
 			this.menuMain.Location = new System.Drawing.Point(0, 0);
 			this.menuMain.Name = "menuMain";
-			this.menuMain.Size = new System.Drawing.Size(1201, 25);
+			this.menuMain.Size = new System.Drawing.Size(1201, 24);
 			this.menuMain.TabIndex = 0;
 			// 
 			// fileToolStripMenuItem
@@ -60,52 +59,46 @@
             this.toolStripMenuItem1,
             this.mnuitmExit});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "File";
 			// 
 			// loadDatabaseToolStripMenuItem
 			// 
 			this.loadDatabaseToolStripMenuItem.Name = "loadDatabaseToolStripMenuItem";
-			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.loadDatabaseToolStripMenuItem.Text = "Open...";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(114, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 6);
 			// 
 			// mnuitmExit
 			// 
 			this.mnuitmExit.Name = "mnuitmExit";
-			this.mnuitmExit.Size = new System.Drawing.Size(117, 22);
+			this.mnuitmExit.Size = new System.Drawing.Size(112, 22);
 			this.mnuitmExit.Text = "Exit";
 			this.mnuitmExit.Click += new System.EventHandler(this.mnuitmExit_Click);
 			// 
 			// dBToolStripMenuItem
 			// 
 			this.dBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuitemStatEditor,
-            this.menuitemItemEditor});
+            this.menuitemStatEditor});
 			this.dBToolStripMenuItem.Name = "dBToolStripMenuItem";
-			this.dBToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
+			this.dBToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
 			this.dBToolStripMenuItem.Text = "Edit";
 			// 
 			// menuitemStatEditor
 			// 
 			this.menuitemStatEditor.Name = "menuitemStatEditor";
-			this.menuitemStatEditor.Size = new System.Drawing.Size(140, 22);
-			this.menuitemStatEditor.Text = "Stat Editor";
-			// 
-			// menuitemItemEditor
-			// 
-			this.menuitemItemEditor.Name = "menuitemItemEditor";
-			this.menuitemItemEditor.Size = new System.Drawing.Size(140, 22);
-			this.menuitemItemEditor.Text = "Item Editor";
+			this.menuitemStatEditor.Size = new System.Drawing.Size(192, 22);
+			this.menuitemStatEditor.Text = "Item Type Editor (Test)";
+			this.menuitemStatEditor.Click += new System.EventHandler(this.menuitemStatEditor_Click);
 			// 
 			// charDetailsToolStripMenuItem
 			// 
 			this.charDetailsToolStripMenuItem.Name = "charDetailsToolStripMenuItem";
-			this.charDetailsToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
+			this.charDetailsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
 			this.charDetailsToolStripMenuItem.Text = "CharDetails";
 			this.charDetailsToolStripMenuItem.Click += new System.EventHandler(this.charDetailsToolStripMenuItem_Click);
 			// 
@@ -153,7 +146,6 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuitmExit;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem dBToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem menuitemItemEditor;
 		private System.Windows.Forms.ToolStripMenuItem menuitemStatEditor;
 		private System.Windows.Forms.ToolStripMenuItem loadDatabaseToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem charDetailsToolStripMenuItem;

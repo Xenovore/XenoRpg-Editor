@@ -229,17 +229,17 @@ namespace XenoRPGEditor
 
 		public int GetItemImgIdx( Item itemInv )
 		{
-			if ( ( itemInv.Type & ItemType.ContSlot  ) == ItemType.ContSlot ) return 0;
-			if ( ( itemInv.Type & ItemType.Container )  > 0                 ) return 1;
-			if ( ( itemInv.Type & ItemType.Coin      ) == ItemType.Coin     ) return 5;
-			if ( ( itemInv.Type & ItemType.Gem       ) == ItemType.Gem      ) return 6;
-			if ( ( itemInv.Type & ItemType.Herb      ) == ItemType.Herb     ) return 7;
-			if ( ( itemInv.Type & ItemType.Necklace  ) == ItemType.Necklace ) return 8;
-			if ( ( itemInv.Type & ItemType.Ring      ) == ItemType.Ring     ) return 9;
-			if ( ( itemInv.Type & ItemType.Earring   ) == ItemType.Earring  ) return 9;
-			if ( ( itemInv.Type & ItemType.Bracelet  ) == ItemType.Bracelet ) return 9;
-			if ( ( itemInv.Type & ItemType.Weapon    ) == ItemType.Weapon   ) return 10;
-			if ( ( itemInv.Type & ItemType.Body      )  > 0                 ) return 4;
+			if ( ( itemInv.Type & ItemTypeEnum.ContSlot  ) == ItemTypeEnum.ContSlot ) return 0;
+			if ( ( itemInv.Type & ItemTypeEnum.Container )  > 0                 ) return 1;
+			if ( ( itemInv.Type & ItemTypeEnum.Coin      ) == ItemTypeEnum.Coin     ) return 5;
+			if ( ( itemInv.Type & ItemTypeEnum.Gem       ) == ItemTypeEnum.Gem      ) return 6;
+			if ( ( itemInv.Type & ItemTypeEnum.Herb      ) == ItemTypeEnum.Herb     ) return 7;
+			if ( ( itemInv.Type & ItemTypeEnum.Necklace  ) == ItemTypeEnum.Necklace ) return 8;
+			if ( ( itemInv.Type & ItemTypeEnum.Ring      ) == ItemTypeEnum.Ring     ) return 9;
+			if ( ( itemInv.Type & ItemTypeEnum.Earring   ) == ItemTypeEnum.Earring  ) return 9;
+			if ( ( itemInv.Type & ItemTypeEnum.Bracelet  ) == ItemTypeEnum.Bracelet ) return 9;
+			if ( ( itemInv.Type & ItemTypeEnum.Weapon    ) == ItemTypeEnum.Weapon   ) return 10;
+			if ( ( itemInv.Type & ItemTypeEnum.Body      )  > 0                 ) return 4;
 
 			// Image index 2 is currently "empty"
 			return 3;
@@ -269,7 +269,7 @@ namespace XenoRPGEditor
 
 			node.Nodes.Insert( 0, nodeNew );
 
-			if ( itemInv != null && ( itemInv.Type & ItemType.Container ) > 0 )
+			if ( itemInv != null && ( itemInv.Type & ItemTypeEnum.Container ) > 0 )
 			{
 				var itemCont = itemInv.Container;
 				if ( itemCont != null )

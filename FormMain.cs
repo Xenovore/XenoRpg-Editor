@@ -100,5 +100,11 @@ namespace XenoRPGEditor
 			form.ShowDialog();
 		}
 
+
+		private void menuitemStatEditor_Click( object sender, EventArgs e )
+		{
+			var form = new FormEditItemType();
+			form.ShowDialog();
+		}
 	}
 }
