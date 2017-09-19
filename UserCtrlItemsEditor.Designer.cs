@@ -68,7 +68,6 @@
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.gridview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.gridview.EnableHeadersVisualStyles = false;
 			this.gridview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -125,12 +124,14 @@
 			this.comboSearchBy.Name = "comboSearchBy";
 			this.comboSearchBy.Size = new System.Drawing.Size(241, 26);
 			this.comboSearchBy.TabIndex = 20;
+			this.comboSearchBy.SelectedIndexChanged += new System.EventHandler(this.comboSearchBy_SelectedIndexChanged);
 			// 
 			// UserCtrlItemsEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
+			this.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
 			this.Controls.Add(this.comboSearchBy);
 			this.Controls.Add(this.lblSearch);
 			this.Controls.Add(this.lblMasterItemList);

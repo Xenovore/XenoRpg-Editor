@@ -38,11 +38,11 @@
 			this.tooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.buttSaveList = new System.Windows.Forms.Button();
-			this.gvStatsAll = new System.Windows.Forms.DataGridView();
+			this.gridview = new System.Windows.Forms.DataGridView();
 			this.comboFilterBy = new System.Windows.Forms.ComboBox();
 			this.lblSearch = new System.Windows.Forms.Label();
 			this.popupMenu.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.gvStatsAll)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.gridview)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// popupMenu
@@ -91,41 +91,40 @@
 			this.buttSaveList.UseVisualStyleBackColor = true;
 			this.buttSaveList.Click += new System.EventHandler(this.buttUpdateAttribList_Click);
 			// 
-			// gvStatsAll
+			// gridview
 			// 
-			this.gvStatsAll.AllowUserToOrderColumns = true;
-			this.gvStatsAll.AllowUserToResizeColumns = false;
-			this.gvStatsAll.AllowUserToResizeRows = false;
+			this.gridview.AllowUserToOrderColumns = true;
+			this.gridview.AllowUserToResizeColumns = false;
+			this.gridview.AllowUserToResizeRows = false;
 			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-			this.gvStatsAll.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this.gvStatsAll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.gridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gvStatsAll.BackgroundColor = System.Drawing.SystemColors.Control;
-			this.gvStatsAll.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.gridview.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.gridview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gvStatsAll.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.gvStatsAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.gvStatsAll.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-			this.gvStatsAll.EnableHeadersVisualStyles = false;
-			this.gvStatsAll.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.gvStatsAll.Location = new System.Drawing.Point(8, 32);
-			this.gvStatsAll.Margin = new System.Windows.Forms.Padding(4);
-			this.gvStatsAll.MultiSelect = false;
-			this.gvStatsAll.Name = "gvStatsAll";
+			this.gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.gridview.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+			this.gridview.EnableHeadersVisualStyles = false;
+			this.gridview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.gridview.Location = new System.Drawing.Point(8, 32);
+			this.gridview.Margin = new System.Windows.Forms.Padding(4);
+			this.gridview.MultiSelect = false;
+			this.gridview.Name = "gridview";
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gvStatsAll.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this.gvStatsAll.RowHeadersWidth = 24;
-			this.gvStatsAll.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.gvStatsAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.gvStatsAll.Size = new System.Drawing.Size(620, 400);
-			this.gvStatsAll.TabIndex = 16;
+			this.gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.gridview.RowHeadersWidth = 24;
+			this.gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.gridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.gridview.Size = new System.Drawing.Size(620, 400);
+			this.gridview.TabIndex = 16;
 			// 
 			// comboFilterBy
 			// 
@@ -165,9 +164,10 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
+			this.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
 			this.Controls.Add(this.comboFilterBy);
 			this.Controls.Add(this.lblSearch);
-			this.Controls.Add(this.gvStatsAll);
+			this.Controls.Add(this.gridview);
 			this.Controls.Add(this.buttSaveList);
 			this.Controls.Add(this.label1);
 			this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -176,7 +176,7 @@
 			this.Load += new System.EventHandler(this.Editor_Load);
 			this.Leave += new System.EventHandler(this.UserCtrlStatEditor_Leave);
 			this.popupMenu.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.gvStatsAll)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gridview)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -190,7 +190,7 @@
 		private System.Windows.Forms.ToolTip tooltip;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button buttSaveList;
-		private System.Windows.Forms.DataGridView gvStatsAll;
+		private System.Windows.Forms.DataGridView gridview;
 		private System.Windows.Forms.ComboBox comboFilterBy;
 		private System.Windows.Forms.Label lblSearch;
 	}

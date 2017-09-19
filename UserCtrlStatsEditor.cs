@@ -11,48 +11,14 @@ namespace XenoRPGEditor
 {
 	public partial class UserCtrlStatsEditor: UserControl
 	{
-		readonly int[] m_iColWidths =
-		{
-			 30, // Id
-			140, // Name
-			 60, // Abbr
-			 90, // Type
-			 60,  // Lvl Min
-			 60, // Lvl Base Low
-			 60, // Lvl Base High
-			 60, // Lvl Max
-			 60, // ScoreBase
-			 80, // XPCost
-			 40, // ApplyType
-			 40, // ApplyHow
-			 40, // ApplyPercent
-			// Desc is set to fill
-		};
-
 		bool m_bAttribsModified = false;
-
+		Dictionary<int, StatType> _listStatTypes;
 		public BindingSource bsStats { get; set; }
 
 		//----------------------------------------------------------------------
 		public UserCtrlStatsEditor()
 		{
 			InitializeComponent();
-		}
-
-
-		//----------------------------------------------------------------------
-		private void SetColWidths( DataGridView gv, int[] iColWidths )
-		{
-			// Use shortest size so we don't run into problems if they don't match...
-			int iColMax = Math.Min( gv.Columns.Count, iColWidths.Length );
-
-			for ( int i = 0; i < iColMax; ++i )
-			{
-				gv.Columns[ i ].Width = iColWidths[ i ];
-			}
-
-			// Set last column to fill...
-			gv.Columns[ gv.Columns.Count - 1 ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 		}
 
 
@@ -65,7 +31,7 @@ namespace XenoRPGEditor
 			var blist = new FilterList<StatBase>( stats.Values.ToList() );
 
 			bsStats = new BindingSource { DataSource = blist };
-			gvStatsAll.DataSource = bsStats;
+			gridview.DataSource = bsStats;
 
 			//if ( bsStats.SupportsFiltering ) bsStats.Filter = "Type='Skill'";
 		}
@@ -73,7 +39,7 @@ namespace XenoRPGEditor
 
 		void LoadStatTypes()
 		{
-			Dictionary<int, StatType> listStatTypes = FormMain.CharManager.LoadStatTypes();
+			_listStatTypes = FormMain.CharManager.LoadStatTypes();
 		}
 
 
@@ -85,9 +51,50 @@ namespace XenoRPGEditor
 				"Right-click table for options." );
 
 			LoadAllStats();
+			LoadStatTypes();
 
-			SetColWidths( gvStatsAll, m_iColWidths );
+			SetGridColumnOrder( gridview );
+			SetGridColumnWidths( gridview );
+
+			gridview.Update();
 		}
+
+		//----------------------------------------------------------------------
+		private void SetGridColumnOrder( DataGridView gv )
+		{
+			if ( gv.Columns.Count == 0 ) return;
+
+			// Throws exception if column name is wrong...
+			try
+			{
+				gv.Columns["Id"         ].DisplayIndex = 0;
+				gv.Columns["Name"       ].DisplayIndex = 1;
+				gv.Columns["Abbr"       ].DisplayIndex = 2;
+				gv.Columns["TypeId"     ].DisplayIndex = 3;
+			}
+			catch { } // Don't care
+		}
+
+
+		//----------------------------------------------------------------------
+		private void SetGridColumnWidths( DataGridView gv )
+		{
+			if ( gv.Columns.Count == 0 ) return;
+
+			// Throws exception if column name is wrong...
+			try
+			{
+				gv.Columns["Id"         ].Width = 40;
+				gv.Columns["Name"       ].Width = 130;
+				gv.Columns["Abbr"       ].Width = 50;
+				gv.Columns["TypeId"     ].Width = 100;
+			}
+			catch { } // Don't care
+
+			// Set last column to fill...
+			gv.Columns[ gv.Columns.Count - 1 ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+		}
+
 
 		//----------------------------------------------------------------------
 		private void SetStatsModified( bool b )
@@ -111,7 +118,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private bool SaveChanges()
 		{
-			var list = ( (BindingSource)gvStatsAll.DataSource ).List;
+			var list = ( (BindingSource)gridview.DataSource ).List;
 
 			int result = FormMain.CharManager.SaveMasterAttribs( (List<Stat>)list );
 
@@ -186,8 +193,15 @@ namespace XenoRPGEditor
 			// Filter grid by
 			string strFilter = comboFilterBy.SelectedText;
 
-			//gvStatsAll.Filter
+			/* FILTER EXAMPLE >>>>>
+			string rowFilter = string.Format("[{0}] = '{1}'", columnName, filterValue);
+			(myDataGridView.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+			//The square brackets allow for spaces in the column name.
 
+			//Additionally, if you want to include multiple values in your filter, you can add the following line for each additional value:
+
+			rowFilter += string.Format(" OR [{0}] = '{1}'", columnName, additionalFilterValue);
+			<<<<< */
 		}
 	}
 }

@@ -236,9 +236,21 @@ namespace XenoRPGEditor
 			SetModified( ( result == DialogResult.Yes ) );
 		}
 
+
 		private void lblMasterItemList_Click( object sender, EventArgs e )
 		{
 
+		}
+
+
+		private void comboSearchBy_SelectedIndexChanged( object sender, EventArgs e )
+		{
+
+			//TODO: filter displayed items by search criteria
+
+			// 1) Change data filter
+
+			// 2) Iterate grid rows and hide the ones that don't match
 		}
 	}
 }
