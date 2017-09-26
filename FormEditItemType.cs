@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,9 +9,10 @@ namespace XenoRPGEditor
 {
 	public partial class FormEditItemType: Form
 	{
-		public ulong TypeValue { get; set; }
+		// Used to load values for listview
+		KeyedCollectionEx<string, ItemTypeClass> _collectionItemTypes;
 
-		KeyedCollectionEx<string, ItemType> _collectionItemTypes;
+		public ulong TypeValue { get; set; }
 
 
 		public FormEditItemType()
@@ -42,6 +42,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void LoadItemTypes()
 		{
+			// Used to load values for listview
 			_collectionItemTypes = FormMain.InvManager.LoadItemTypes();
 		}
 
@@ -58,16 +59,18 @@ namespace XenoRPGEditor
 			// Create and add items...
 			bool bAltRow = false;
 
-			foreach ( ItemType itemType in _collectionItemTypes )
+			foreach ( ItemTypeClass itemType in _collectionItemTypes )
 			{
 				var item = new ListViewItem( itemType.Name );
 				item.SubItems.Add( itemType.ValueAsHex );
+				item.SubItems.Add( itemType.Description );
+
 				item.Tag = itemType.Value;
 				item.ImageIndex = itemType.IconIdx;
 
 				if ( bAltRow )
 				{
-					item.BackColor = Color.FromArgb( 0x00F4F6FF );
+					item.BackColor = Color.FromArgb( 235, 235, 255 );
 				}
 				bAltRow = !bAltRow;
 

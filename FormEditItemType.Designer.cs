@@ -33,6 +33,7 @@
 			this.listviewTypes = new System.Windows.Forms.ListView();
 			this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeaderValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.imagelist = new System.Windows.Forms.ImageList(this.components);
 			this.buttOk = new System.Windows.Forms.Button();
 			this.buttCancel = new System.Windows.Forms.Button();
@@ -49,14 +50,15 @@
 			this.listviewTypes.CausesValidation = false;
 			this.listviewTypes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
-            this.columnHeaderValue});
+            this.columnHeaderValue,
+            this.columnHeaderDescription});
 			this.listviewTypes.FullRowSelect = true;
 			this.listviewTypes.GridLines = true;
 			this.listviewTypes.HideSelection = false;
 			this.listviewTypes.Location = new System.Drawing.Point(8, 32);
 			this.listviewTypes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.listviewTypes.Name = "listviewTypes";
-			this.listviewTypes.Size = new System.Drawing.Size(320, 368);
+			this.listviewTypes.Size = new System.Drawing.Size(769, 488);
 			this.listviewTypes.SmallImageList = this.imagelist;
 			this.listviewTypes.TabIndex = 0;
 			this.listviewTypes.UseCompatibleStateImageBehavior = false;
@@ -66,12 +68,17 @@
 			// columnHeaderName
 			// 
 			this.columnHeaderName.Text = "Name";
-			this.columnHeaderName.Width = 160;
+			this.columnHeaderName.Width = 150;
 			// 
 			// columnHeaderValue
 			// 
 			this.columnHeaderValue.Text = "Value";
-			this.columnHeaderValue.Width = 109;
+			this.columnHeaderValue.Width = 150;
+			// 
+			// columnHeaderDescription
+			// 
+			this.columnHeaderDescription.Text = "Description";
+			this.columnHeaderDescription.Width = 300;
 			// 
 			// imagelist
 			// 
@@ -98,7 +105,7 @@
 			// 
 			this.buttOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttOk.Location = new System.Drawing.Point(8, 407);
+			this.buttOk.Location = new System.Drawing.Point(8, 527);
 			this.buttOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttOk.Name = "buttOk";
 			this.buttOk.Size = new System.Drawing.Size(80, 26);
@@ -111,7 +118,7 @@
 			// 
 			this.buttCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttCancel.Location = new System.Drawing.Point(94, 407);
+			this.buttCancel.Location = new System.Drawing.Point(94, 527);
 			this.buttCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttCancel.Name = "buttCancel";
 			this.buttCancel.Size = new System.Drawing.Size(80, 26);
@@ -147,7 +154,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(335, 441);
+			this.ClientSize = new System.Drawing.Size(784, 561);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttCancel);
@@ -182,5 +189,6 @@
 		private System.Windows.Forms.ColumnHeader columnHeaderName;
 		private System.Windows.Forms.ColumnHeader columnHeaderValue;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ColumnHeader columnHeaderDescription;
 	}
 }
