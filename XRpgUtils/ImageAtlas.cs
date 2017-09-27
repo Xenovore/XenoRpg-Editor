@@ -2,24 +2,19 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
 namespace XRpgUtils
 {
+	//TODO: REPLACE ALL MESSAGEBOXES WITH SOMETHING ELSE; LOG FILE?
 	public class ImageAtlas
 	{
-		private Bitmap _bitmap;
-		private List<Rectangle> _listRects;
+		Bitmap _bitmap;
 
-		public List<Rectangle> ListRects { get { return _listRects; } }
-
+		public List<Rectangle> ListRects { get; }
 		//TODO: UV coords list
-		public int IconCount { get { return _listRects.Count; } }
 
-		public Bitmap  MainImage
-		{
-			get { return _bitmap; }
-		}
+		public int ImageCount => ListRects.Count;
+		public Bitmap MainImage => _bitmap;
 
 		//----------------------------------------------------------------------
 		public ImageAtlas( string strFilename )
@@ -30,10 +25,10 @@ namespace XRpgUtils
 			}
 			catch
 			{
-				return;
+				throw new ApplicationException( $"ERROR: Failed to load atlas bitmap \"{strFilename}\"!" );
 			}
 
-			_listRects = new List<Rectangle>();
+			ListRects = new List<Rectangle>();
 
 			//TODO: Look for XML file with same name as image and load rects/uvs from there
 
@@ -49,7 +44,7 @@ namespace XRpgUtils
 		Int32 ConstructRects()
 		{
 			// Already populated? Return count...
-			if ( _listRects.Count > 0 ) return _listRects.Count;
+			if ( ListRects.Count > 0 ) return ListRects.Count;
 
 			// Paranoia...
 			if ( _bitmap == null ) MessageBox.Show( "No bitmap loaded." );
@@ -62,7 +57,7 @@ namespace XRpgUtils
 			// Now loop through pieces, and find the bounding rectangle for each piece...
 			int iPosY = 0;
 
-			_listRects.Clear();
+			ListRects.Clear();
 			while ( iPosY < _bitmap.Height )
 			{
 				// Determine the height of this row
@@ -101,7 +96,7 @@ namespace XRpgUtils
 						iPosYStep++;
 					}
 
-					_listRects.Add( new Rectangle( iPosXStart, iPosY, iPosX - iPosXStart, iPosYStep - iPosY ) );
+					ListRects.Add( new Rectangle( iPosXStart, iPosY, iPosX - iPosXStart, iPosYStep - iPosY ) );
 				}
 
 				// Skip to the next separation color on column 0
@@ -113,25 +108,21 @@ namespace XRpgUtils
 				}
 			}
 
-			//TODO: Save rect list to XML file with same name as parent image; 
+			//TODO: Save rect list to XML file with same name as parent image;
 			// then we can just load that instead of doing all this work every time.
 
-			return _listRects.Count;
+			return ListRects.Count;
 		}
 
 
 		//----------------------------------------------------------------------------
-		public Rectangle GetSubImageRectAt( ushort i )
-		{
-			return ( i < _listRects.Count ) ? _listRects[ i ] : new Rectangle( 0, 0, 0, 0 );
-		}
+		public Rectangle GetSubImageRectAt( ushort i ) =>
+			( i < ListRects.Count ) ? ListRects[ i ] : new Rectangle( 0, 0, 0, 0 );
 
 
 		//----------------------------------------------------------------------------
-		public Bitmap GetSubImageAt( ushort i )
-		{
-			return _bitmap.Clone( GetSubImageRectAt( i ), _bitmap.PixelFormat );
-		}
+		public Bitmap GetSubImageAt( ushort i ) =>
+			_bitmap.Clone( GetSubImageRectAt( i ), _bitmap.PixelFormat );
 
 	}
 }
