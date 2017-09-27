@@ -227,10 +227,11 @@ namespace XenoRPGEditor
 		}
 
 
+		//TODO: USE ITEMTYPES IconIndex
 		public int GetItemImgIdx( Item itemInv )
 		{
 			if ( ( itemInv.Type & ItemTypeEnum.ContSlot  ) == ItemTypeEnum.ContSlot ) return 0;
-			if ( ( itemInv.Type & ItemTypeEnum.Container )  > 0                 ) return 1;
+			if ( ( itemInv.Type & ItemTypeEnum.Container )  > 0                     ) return 1;
 			if ( ( itemInv.Type & ItemTypeEnum.Coin      ) == ItemTypeEnum.Coin     ) return 5;
 			if ( ( itemInv.Type & ItemTypeEnum.Gem       ) == ItemTypeEnum.Gem      ) return 6;
 			if ( ( itemInv.Type & ItemTypeEnum.Herb      ) == ItemTypeEnum.Herb     ) return 7;
@@ -239,7 +240,7 @@ namespace XenoRPGEditor
 			if ( ( itemInv.Type & ItemTypeEnum.Earring   ) == ItemTypeEnum.Earring  ) return 9;
 			if ( ( itemInv.Type & ItemTypeEnum.Bracelet  ) == ItemTypeEnum.Bracelet ) return 9;
 			if ( ( itemInv.Type & ItemTypeEnum.Weapon    ) == ItemTypeEnum.Weapon   ) return 10;
-			if ( ( itemInv.Type & ItemTypeEnum.Body      )  > 0                 ) return 4;
+			if ( ( itemInv.Type & ItemTypeEnum.Body      )  > 0                     ) return 4;
 
 			// Image index 2 is currently "empty"
 			return 3;
@@ -338,6 +339,7 @@ namespace XenoRPGEditor
 					Height    = (int)item.SizeH * c_slotExtent,
 					Movable   = true,
 					Font      = new Font( "Calibri", 8 ),
+					//TODO: THIS SHOULD USE IMAGE ATLAS
 					BackgroundFilename = "images/InvSlot.png",
 					ItemImageFilename = "images/InvGem.png",
 				};

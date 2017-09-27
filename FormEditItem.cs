@@ -24,7 +24,7 @@ namespace XenoRPGEditor
 		{
 			InitializeComponent();
 			formTypeEdit = new FormEditItemType();
-			spinIconIdx.Maximum = m_invicons.IconCount - 1;
+			spinIconIdx.Maximum = m_invicons.ImageCount - 1;
 		}
 
 

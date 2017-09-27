@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
 using XRpg;
 using XRpg.Utility;
+using XRpgUtils;
 
 namespace XenoRPGEditor
 {
 	public partial class FormEditItemType: Form
 	{
+		ImageAtlas _atlasInventoryIcons;
+
 		// Used to load values for listview
 		KeyedCollectionEx<string, ItemTypeClass> _collectionItemTypes;
 
@@ -18,8 +22,34 @@ namespace XenoRPGEditor
 		public FormEditItemType()
 		{
 			InitializeComponent();
+			LoadItemTypes();
+			LoadItemTypeIcons();
 			PopulateListView();
 			ResizeColumnHeaders();
+		}
+
+
+		//----------------------------------------------------------------------
+		private void LoadItemTypes()
+		{
+			// Used to load values for listview
+			_collectionItemTypes = FormMain.InvManager.LoadItemTypes();
+		}
+
+
+		//----------------------------------------------------------------------
+		private void LoadItemTypeIcons()
+		{
+			_atlasInventoryIcons = new ImageAtlas( @"Images\ItemTypeIcons.png" );
+
+			var imageList = new ImageList();
+			for ( ushort i = 0; i < _atlasInventoryIcons.ImageCount; ++i )
+			{
+				Bitmap image = _atlasInventoryIcons.GetSubImageAt( i );
+				imageList.Images.Add( image );
+			}
+
+			listviewTypes.SmallImageList = imageList;
 		}
 
 
@@ -40,25 +70,14 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		private void LoadItemTypes()
-		{
-			// Used to load values for listview
-			_collectionItemTypes = FormMain.InvManager.LoadItemTypes();
-		}
-
-
-		//----------------------------------------------------------------------
 		private void PopulateListView()
 		{
 			listviewTypes.Items.Clear();
-
-			LoadItemTypes();
 
 			//TODO: Set selected items from TypeValue
 
 			// Create and add items...
 			bool bAltRow = false;
-
 			foreach ( ItemTypeClass itemType in _collectionItemTypes )
 			{
 				var item = new ListViewItem( itemType.Name );
@@ -66,7 +85,7 @@ namespace XenoRPGEditor
 				item.SubItems.Add( itemType.Description );
 
 				item.Tag = itemType.Value;
-				item.ImageIndex = itemType.IconIdx;
+				item.ImageIndex = itemType.IconIndex;
 
 				if ( bAltRow )
 				{
@@ -76,7 +95,6 @@ namespace XenoRPGEditor
 
 				listviewTypes.Items.Add( item );
 			}
-			//<<<<<*/
 		}
 
 
@@ -137,5 +155,9 @@ namespace XenoRPGEditor
 			}
 		}
 
+		private void listviewTypes_ColumnClick( object sender, ColumnClickEventArgs e )
+		{
+			//TODO: SORT BY COLUMN CLICKED: Ascending or Descending or None
+		}
 	} // class FormTypeEdit
 }

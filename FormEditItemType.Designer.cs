@@ -55,14 +55,15 @@
 			this.listviewTypes.FullRowSelect = true;
 			this.listviewTypes.GridLines = true;
 			this.listviewTypes.HideSelection = false;
-			this.listviewTypes.Location = new System.Drawing.Point(8, 32);
+			this.listviewTypes.Location = new System.Drawing.Point(8, 37);
 			this.listviewTypes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.listviewTypes.Name = "listviewTypes";
-			this.listviewTypes.Size = new System.Drawing.Size(769, 488);
-			this.listviewTypes.SmallImageList = this.imagelist;
+			this.listviewTypes.ShowItemToolTips = true;
+			this.listviewTypes.Size = new System.Drawing.Size(769, 483);
 			this.listviewTypes.TabIndex = 0;
 			this.listviewTypes.UseCompatibleStateImageBehavior = false;
 			this.listviewTypes.View = System.Windows.Forms.View.Details;
+			this.listviewTypes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listviewTypes_ColumnClick);
 			this.listviewTypes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listviewTypes_MouseClick);
 			// 
 			// columnHeaderName
@@ -131,7 +132,7 @@
 			this.label1.AutoSize = true;
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(8, 8);
+			this.label1.Location = new System.Drawing.Point(8, 12);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(76, 18);
 			this.label1.TabIndex = 2;
@@ -143,7 +144,7 @@
 			this.label2.BackColor = System.Drawing.Color.Transparent;
 			this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-			this.label2.Location = new System.Drawing.Point(130, 11);
+			this.label2.Location = new System.Drawing.Point(579, 14);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(193, 15);
 			this.label2.TabIndex = 3;
@@ -165,7 +166,7 @@
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(250, 200);
+			this.MinimumSize = new System.Drawing.Size(415, 360);
 			this.Name = "FormEditItemType";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
