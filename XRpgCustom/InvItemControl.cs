@@ -120,6 +120,8 @@ namespace XenoRPGEditor
 		}
 
 
+		//TODO: UPDATE TO TAKE IMAGE ATLAS FILENAME AND SUB-IMAGE INDEX
+
 		//----------------------------------------------------------------------
 		[Category("Appearance"), Description( "Filename for item image" )]
 		public string ItemImageFilename
@@ -168,7 +170,15 @@ namespace XenoRPGEditor
 				_strBackgroundFilename = value;
 				if ( !String.IsNullOrWhiteSpace( _strBackgroundFilename ) )
 				{
-					_bmpItemImage = new Bitmap( _strBackgroundFilename );
+					try
+					{
+						_bmpItemImage = new Bitmap( _strBackgroundFilename );
+					}
+					catch
+					{
+
+					}
+
 					if ( _useBgImageSize )
 					{
 						this.Width = _bmpItemImage.Width;
@@ -186,7 +196,21 @@ namespace XenoRPGEditor
 		{
 			InitializeComponent();
 
-			//TODO: Get item image based on itemImageName
+			if ( !String.IsNullOrWhiteSpace( itemImageName ) )
+			{
+				_bmpItemImage = new Bitmap( _strItemImageFilename );
+			}
+		}
+
+
+		//----------------------------------------------------------------------
+		public InvItemControl( Bitmap bitmap )
+		{
+			Debug.Assert( bitmap != null );
+
+			InitializeComponent();
+
+			_bmpItemImage = bitmap;
 		}
 
 
@@ -202,7 +226,7 @@ namespace XenoRPGEditor
 
 			if ( !String.IsNullOrWhiteSpace( _strBackgroundFilename ) )
 			{
-				_bmpItemImage = new Bitmap( _strBackgroundFilename );
+				_bmpBackground = new Bitmap( _strBackgroundFilename );
 			}
 
 			TextPos = TextPosition.BottomRight;

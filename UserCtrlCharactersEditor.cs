@@ -70,7 +70,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void InitGrid()
 		{
-			if ( gridview.Columns.Count == 0 ) return;
+			if ( dgvCharacters.Columns.Count == 0 ) return;
 
 			/*var column = new DataGridViewComboBoxColumn();
 			column.HeaderText = "Type";
@@ -91,7 +91,7 @@ namespace XenoRPGEditor
 		{
 			List<CharacterBase> listCharacters = FormMain.CharManager.LoadAllCharacters();
 
-			gridview.DataSource = listCharacters;
+			dgvCharacters.DataSource = listCharacters;
 
 		}
 
@@ -101,7 +101,7 @@ namespace XenoRPGEditor
 		{
 			LoadCharactersTable();
 			InitGrid();
-			SetColWidths( gridview );
+			SetColWidths( dgvCharacters );
 
 			//dataGridView1.Columns[ 2 ].HeaderText = "Type";
 			//dataGridView1.Columns[ 3 ].HeaderText = "Wt";
@@ -204,7 +204,7 @@ namespace XenoRPGEditor
 		{
 			//TODO: Create the form once above...
 			var form = new FormEditItem();
-			var table = ( DataTable )gridview.DataSource;
+			var table = ( DataTable )dgvCharacters.DataSource;
 
 			// If clicking on bottom row, add new item...
 			if ( e.RowIndex >= table.Rows.Count )
@@ -220,6 +220,13 @@ namespace XenoRPGEditor
 
 			var result = form.ShowDialog();
 			SetModified( ( result == DialogResult.Yes ) );
+		}
+
+		private void dgvCharacters_CellDoubleClick( object sender, DataGridViewCellEventArgs e )
+		{
+			uint id = (uint)dgvCharacters.Rows[e.RowIndex].Cells["Id"].Value;
+			var form = new FormEditCharacter( id );
+			form.ShowDialog();
 		}
 	}
 }

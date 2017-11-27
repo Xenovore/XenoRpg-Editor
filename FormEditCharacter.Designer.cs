@@ -32,7 +32,6 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditCharacter));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.menuTree = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.loadFromTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadFromXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,11 +64,14 @@
 			this.splitContInventory = new System.Windows.Forms.SplitContainer();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageEquipped = new System.Windows.Forms.TabPage();
-			this.invContainerSlots = new XenoRPGEditor.InvContainerControl();
 			this.tabPageTreeView = new System.Windows.Forms.TabPage();
 			this.treeviewInv = new System.Windows.Forms.TreeView();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.buttSave = new System.Windows.Forms.Button();
+			this.buttClose = new System.Windows.Forms.Button();
+			this.label10 = new System.Windows.Forms.Label();
+			this.invContainerSlots = new XenoRPGEditor.InvContainerControl();
 			this.invContainerSelected = new XenoRPGEditor.InvContainerControl();
 			this.menuTree.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -186,7 +188,7 @@
 			// 
 			this.splitContMain.Panel2.Controls.Add(this.label6);
 			this.splitContMain.Panel2.Controls.Add(this.panel2);
-			this.splitContMain.Size = new System.Drawing.Size(1216, 645);
+			this.splitContMain.Size = new System.Drawing.Size(1216, 725);
 			this.splitContMain.SplitterDistance = 436;
 			this.splitContMain.TabIndex = 20;
 			// 
@@ -234,8 +236,8 @@
 			this.splitContInfoStats.Panel2.Controls.Add(this.comboStatTypeFilter);
 			this.splitContInfoStats.Panel2.Controls.Add(this.gridCharacterStats);
 			this.splitContInfoStats.Panel2.Controls.Add(this.lblCharAttribs);
-			this.splitContInfoStats.Size = new System.Drawing.Size(429, 615);
-			this.splitContInfoStats.SplitterDistance = 176;
+			this.splitContInfoStats.Size = new System.Drawing.Size(429, 695);
+			this.splitContInfoStats.SplitterDistance = 170;
 			this.splitContInfoStats.TabIndex = 19;
 			// 
 			// textTitle
@@ -350,7 +352,7 @@
 			// 
 			this.comboStatTypeFilter.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.comboStatTypeFilter.FormattingEnabled = true;
-			this.comboStatTypeFilter.Location = new System.Drawing.Point(54, 3);
+			this.comboStatTypeFilter.Location = new System.Drawing.Point(54, 7);
 			this.comboStatTypeFilter.Name = "comboStatTypeFilter";
 			this.comboStatTypeFilter.Size = new System.Drawing.Size(140, 22);
 			this.comboStatTypeFilter.TabIndex = 21;
@@ -358,41 +360,39 @@
 			// 
 			// gridCharacterStats
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-			this.gridCharacterStats.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.gridCharacterStats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gridCharacterStats.BackgroundColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.gridCharacterStats.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.gridCharacterStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.gridCharacterStats.Location = new System.Drawing.Point(6, 35);
+			this.gridCharacterStats.Name = "gridCharacterStats";
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridCharacterStats.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.gridCharacterStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.gridCharacterStats.Location = new System.Drawing.Point(6, 31);
-			this.gridCharacterStats.Name = "gridCharacterStats";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridCharacterStats.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.gridCharacterStats.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.gridCharacterStats.RowHeadersVisible = false;
 			this.gridCharacterStats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.gridCharacterStats.Size = new System.Drawing.Size(415, 398);
+			this.gridCharacterStats.Size = new System.Drawing.Size(415, 480);
 			this.gridCharacterStats.TabIndex = 19;
 			// 
 			// lblCharAttribs
 			// 
 			this.lblCharAttribs.AutoSize = true;
 			this.lblCharAttribs.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblCharAttribs.Location = new System.Drawing.Point(3, 6);
+			this.lblCharAttribs.Location = new System.Drawing.Point(3, 10);
 			this.lblCharAttribs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblCharAttribs.Name = "lblCharAttribs";
 			this.lblCharAttribs.Size = new System.Drawing.Size(46, 16);
@@ -419,7 +419,7 @@
 			this.panel2.Controls.Add(this.splitContInventory);
 			this.panel2.Location = new System.Drawing.Point(0, 25);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(770, 615);
+			this.panel2.Size = new System.Drawing.Size(770, 695);
 			this.panel2.TabIndex = 0;
 			// 
 			// splitContInventory
@@ -440,7 +440,7 @@
 			this.splitContInventory.Panel2.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
 			this.splitContInventory.Panel2.Controls.Add(this.label8);
 			this.splitContInventory.Panel2.Controls.Add(this.invContainerSelected);
-			this.splitContInventory.Size = new System.Drawing.Size(770, 615);
+			this.splitContInventory.Size = new System.Drawing.Size(770, 695);
 			this.splitContInventory.SplitterDistance = 383;
 			this.splitContInventory.TabIndex = 0;
 			// 
@@ -455,7 +455,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(3, 22);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(375, 589);
+			this.tabControl1.Size = new System.Drawing.Size(375, 669);
 			this.tabControl1.TabIndex = 28;
 			// 
 			// tabPageEquipped
@@ -464,27 +464,10 @@
 			this.tabPageEquipped.Location = new System.Drawing.Point(4, 25);
 			this.tabPageEquipped.Name = "tabPageEquipped";
 			this.tabPageEquipped.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageEquipped.Size = new System.Drawing.Size(367, 560);
+			this.tabPageEquipped.Size = new System.Drawing.Size(367, 640);
 			this.tabPageEquipped.TabIndex = 0;
 			this.tabPageEquipped.Text = "Slots";
 			this.tabPageEquipped.UseVisualStyleBackColor = true;
-			// 
-			// invContainerSlots
-			// 
-			this.invContainerSlots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.invContainerSlots.BackgroundImageFilename = null;
-			this.invContainerSlots.FrameImageFilename = "images/rpginvframe.png";
-			this.invContainerSlots.GradientAngle = 55;
-			this.invContainerSlots.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-			this.invContainerSlots.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
-			this.invContainerSlots.Location = new System.Drawing.Point(0, 0);
-			this.invContainerSlots.Name = "invContainerSlots";
-			this.invContainerSlots.Size = new System.Drawing.Size(367, 558);
-			this.invContainerSlots.TabIndex = 25;
-			this.invContainerSlots.Text = "invContainerControl2";
-			this.invContainerSlots.UIScale = 0F;
 			// 
 			// tabPageTreeView
 			// 
@@ -492,7 +475,7 @@
 			this.tabPageTreeView.Location = new System.Drawing.Point(4, 25);
 			this.tabPageTreeView.Name = "tabPageTreeView";
 			this.tabPageTreeView.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageTreeView.Size = new System.Drawing.Size(367, 560);
+			this.tabPageTreeView.Size = new System.Drawing.Size(367, 640);
 			this.tabPageTreeView.TabIndex = 1;
 			this.tabPageTreeView.Text = "Tree View";
 			this.tabPageTreeView.UseVisualStyleBackColor = true;
@@ -508,7 +491,7 @@
 			this.treeviewInv.LineColor = System.Drawing.Color.DarkGray;
 			this.treeviewInv.Location = new System.Drawing.Point(8, 6);
 			this.treeviewInv.Name = "treeviewInv";
-			this.treeviewInv.Size = new System.Drawing.Size(355, 554);
+			this.treeviewInv.Size = new System.Drawing.Size(355, 634);
 			this.treeviewInv.TabIndex = 22;
 			// 
 			// label7
@@ -533,6 +516,59 @@
 			this.label8.TabIndex = 25;
 			this.label8.Text = "Selected Container";
 			// 
+			// buttSave
+			// 
+			this.buttSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.buttSave.Enabled = false;
+			this.buttSave.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttSave.Location = new System.Drawing.Point(7, 726);
+			this.buttSave.Name = "buttSave";
+			this.buttSave.Size = new System.Drawing.Size(120, 32);
+			this.buttSave.TabIndex = 21;
+			this.buttSave.Text = "Save Changes";
+			this.buttSave.UseVisualStyleBackColor = true;
+			this.buttSave.Click += new System.EventHandler(this.buttSave_Click);
+			// 
+			// buttClose
+			// 
+			this.buttClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.buttClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttClose.Location = new System.Drawing.Point(133, 726);
+			this.buttClose.Name = "buttClose";
+			this.buttClose.Size = new System.Drawing.Size(120, 32);
+			this.buttClose.TabIndex = 22;
+			this.buttClose.Text = "Close";
+			this.buttClose.UseVisualStyleBackColor = true;
+			this.buttClose.Click += new System.EventHandler(this.buttClose_Click);
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("DejaVu Sans Mono", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.ForeColor = System.Drawing.Color.Red;
+			this.label10.Location = new System.Drawing.Point(287, 736);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(489, 19);
+			this.label10.TabIndex = 23;
+			this.label10.Text = "TODO: PUT DETAILS AND INVENTORY ON SEPARATE TABS";
+			// 
+			// invContainerSlots
+			// 
+			this.invContainerSlots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.invContainerSlots.BackgroundImageFilename = null;
+			this.invContainerSlots.FrameImageFilename = "images/rpginvframe.png";
+			this.invContainerSlots.GradientAngle = 55;
+			this.invContainerSlots.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+			this.invContainerSlots.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
+			this.invContainerSlots.Location = new System.Drawing.Point(0, 0);
+			this.invContainerSlots.Name = "invContainerSlots";
+			this.invContainerSlots.Size = new System.Drawing.Size(367, 638);
+			this.invContainerSlots.TabIndex = 25;
+			this.invContainerSlots.Text = "invContainerControl2";
+			this.invContainerSlots.UIScale = 0F;
+			// 
 			// invContainerSelected
 			// 
 			this.invContainerSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -545,7 +581,7 @@
 			this.invContainerSelected.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
 			this.invContainerSelected.Location = new System.Drawing.Point(6, 20);
 			this.invContainerSelected.Name = "invContainerSelected";
-			this.invContainerSelected.Size = new System.Drawing.Size(367, 585);
+			this.invContainerSelected.Size = new System.Drawing.Size(367, 665);
 			this.invContainerSelected.TabIndex = 24;
 			this.invContainerSelected.Text = "invContainerControl1";
 			this.invContainerSelected.UIScale = 0F;
@@ -555,14 +591,17 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1216, 646);
+			this.ClientSize = new System.Drawing.Size(1216, 764);
+			this.Controls.Add(this.label10);
+			this.Controls.Add(this.buttClose);
+			this.Controls.Add(this.buttSave);
 			this.Controls.Add(this.splitContMain);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(800, 600);
 			this.Name = "FormEditCharacter";
-			this.Text = "Character Details";
+			this.Text = "Character Editor";
 			this.menuTree.ResumeLayout(false);
 			this.splitContMain.Panel1.ResumeLayout(false);
 			this.splitContMain.Panel1.PerformLayout();
@@ -588,6 +627,7 @@
 			this.tabPageEquipped.ResumeLayout(false);
 			this.tabPageTreeView.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -631,5 +671,8 @@
 		private System.Windows.Forms.ComboBox comboProfession;
 		private System.Windows.Forms.ComboBox comboRace;
 		private System.Windows.Forms.ComboBox comboStatTypeFilter;
+		private System.Windows.Forms.Button buttSave;
+		private System.Windows.Forms.Button buttClose;
+		private System.Windows.Forms.Label label10;
 	}
 }

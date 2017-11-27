@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace XRpgUtils
 {
@@ -10,14 +11,28 @@ namespace XRpgUtils
 	{
 		Bitmap _bitmap;
 
-		public List<Rectangle> ListRects { get; }
+		public List<Rectangle> ListRects { get; set; }
 		//TODO: UV coords list
 
 		public int ImageCount => ListRects.Count;
 		public Bitmap MainImage => _bitmap;
 
 		//----------------------------------------------------------------------
+		public ImageAtlas()
+		{
+		}
+
+
+		//----------------------------------------------------------------------
 		public ImageAtlas( string strFilename )
+		{
+			int result = Load( strFilename );
+			//TODO: Check result; log message
+		}
+
+
+		//----------------------------------------------------------------------
+		public int Load( string strFilename )
 		{
 			try
 			{
@@ -25,20 +40,28 @@ namespace XRpgUtils
 			}
 			catch
 			{
-				throw new ApplicationException( $"ERROR: Failed to load atlas bitmap \"{strFilename}\"!" );
+				//TODO: Provide an alternative here; the exception makes the control look unstable at design time
+				//throw new ApplicationException( $"ERROR: Failed to load atlas bitmap \"{strFilename}\"!" );
 			}
+
+			if ( _bitmap == null ) return -1;
 
 			ListRects = new List<Rectangle>();
 
 			//TODO: Look for XML file with same name as image and load rects/uvs from there
+			// if xmlfile exists then load rects/uvs
+			// else
+			// {
+			int iRectCount = ConstructRects();
+			int iUVCount = ConstructUVs();
 
-			int iCount = ConstructRects();
+			Debug.Assert( iRectCount > 0 );
+			Debug.Assert( iUVCount > 0 );
+			// }
 
-			//TODO: Construct UVs
-
-			if ( iCount == 0 ) MessageBox.Show( "Crap." );
-
+			return 0;
 		}
+
 
 		//----------------------------------------------------------------------------
 		Int32 ConstructRects()
@@ -115,6 +138,15 @@ namespace XRpgUtils
 		}
 
 
+		//----------------------------------------------------------------------------
+		Int32 ConstructUVs()
+		{
+			//TODO: Construct UV list
+
+			return 1;
+		}
+
+		
 		//----------------------------------------------------------------------------
 		public Rectangle GetSubImageRectAt( ushort i ) =>
 			( i < ListRects.Count ) ? ListRects[ i ] : new Rectangle( 0, 0, 0, 0 );

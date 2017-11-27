@@ -1,74 +1,78 @@
 ﻿namespace XenoRPGEditor
 {
-	partial class UserCtrlCharactersEditor
-	{
-		/// <summary> 
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class UserCtrlCharactersEditor
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary> 
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose( bool disposing )
-		{
-			if ( disposing && ( components != null ) )
-			{
-				components.Dispose();
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose( bool disposing )
+        {
+            if ( disposing && ( components != null ) )
+            {
+                components.Dispose();
+            }
+            base.Dispose( disposing );
+        }
 
-		#region Component Designer generated code
+        #region Component Designer generated code
 
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			this.gridview = new System.Windows.Forms.DataGridView();
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			this.dgvCharacters = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboSearchBy = new System.Windows.Forms.ComboBox();
 			this.lblSearch = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.gridview)).BeginInit();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCharacters)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// gridview
+			// dgvCharacters
 			// 
-			this.gridview.AllowUserToOrderColumns = true;
-			this.gridview.AllowUserToResizeRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-			this.gridview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this.gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dgvCharacters.AllowUserToResizeRows = false;
+			dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+			this.dgvCharacters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+			this.dgvCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gridview.BackgroundColor = System.Drawing.SystemColors.Control;
-			this.gridview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.gridview.EnableHeadersVisualStyles = false;
-			this.gridview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.gridview.Location = new System.Drawing.Point(8, 32);
-			this.gridview.Margin = new System.Windows.Forms.Padding(4);
-			this.gridview.MultiSelect = false;
-			this.gridview.Name = "gridview";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this.gridview.RowHeadersWidth = 24;
-			this.gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.gridview.Size = new System.Drawing.Size(620, 400);
-			this.gridview.TabIndex = 6;
+			this.dgvCharacters.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dgvCharacters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCharacters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			this.dgvCharacters.EnableHeadersVisualStyles = false;
+			this.dgvCharacters.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.dgvCharacters.Location = new System.Drawing.Point(8, 32);
+			this.dgvCharacters.Margin = new System.Windows.Forms.Padding(4);
+			this.dgvCharacters.MultiSelect = false;
+			this.dgvCharacters.Name = "dgvCharacters";
+			this.dgvCharacters.ReadOnly = true;
+			this.dgvCharacters.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCharacters.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+			this.dgvCharacters.RowHeadersWidth = 24;
+			this.dgvCharacters.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dgvCharacters.Size = new System.Drawing.Size(620, 400);
+			this.dgvCharacters.TabIndex = 6;
+			this.dgvCharacters.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCharacters_CellDoubleClick);
 			// 
 			// label1
 			// 
@@ -105,29 +109,55 @@
 			this.lblSearch.Text = "Search:";
 			this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.Color.Transparent;
+			this.label2.Location = new System.Drawing.Point(119, 11);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(121, 13);
+			this.label2.TabIndex = 23;
+			this.label2.Text = "Double-click row to edit.";
+			// 
+			// label3
+			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("DejaVu Sans Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.Color.Red;
+			this.label3.Location = new System.Drawing.Point(328, 445);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(259, 19);
+			this.label3.TabIndex = 24;
+			this.label3.Text = "TODO: SEARCH BY DROP_DOWN";
+			// 
 			// UserCtrlCharactersEditor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.comboSearchBy);
 			this.Controls.Add(this.lblSearch);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.gridview);
+			this.Controls.Add(this.dgvCharacters);
 			this.Name = "UserCtrlCharactersEditor";
 			this.Size = new System.Drawing.Size(640, 480);
 			this.Load += new System.EventHandler(this.Editor_Load);
-			((System.ComponentModel.ISupportInitialize)(this.gridview)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvCharacters)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.DataGridView gridview;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ComboBox comboSearchBy;
-		private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.DataGridView dgvCharacters;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboSearchBy;
+        private System.Windows.Forms.Label lblSearch;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
 	}
 }

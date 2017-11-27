@@ -36,7 +36,6 @@
 			this.mnuitmExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.dBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuitemStatEditor = new System.Windows.Forms.ToolStripMenuItem();
-			this.charDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabCtrlMain = new System.Windows.Forms.TabControl();
 			this.menuMain.SuspendLayout();
 			this.SuspendLayout();
@@ -45,8 +44,7 @@
 			// 
 			this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.dBToolStripMenuItem,
-            this.charDetailsToolStripMenuItem});
+            this.dBToolStripMenuItem});
 			this.menuMain.Location = new System.Drawing.Point(0, 0);
 			this.menuMain.Name = "menuMain";
 			this.menuMain.Size = new System.Drawing.Size(1201, 24);
@@ -65,18 +63,18 @@
 			// loadDatabaseToolStripMenuItem
 			// 
 			this.loadDatabaseToolStripMenuItem.Name = "loadDatabaseToolStripMenuItem";
-			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.loadDatabaseToolStripMenuItem.Text = "Open...";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// mnuitmExit
 			// 
 			this.mnuitmExit.Name = "mnuitmExit";
-			this.mnuitmExit.Size = new System.Drawing.Size(112, 22);
+			this.mnuitmExit.Size = new System.Drawing.Size(152, 22);
 			this.mnuitmExit.Text = "Exit";
 			this.mnuitmExit.Click += new System.EventHandler(this.mnuitmExit_Click);
 			// 
@@ -94,13 +92,6 @@
 			this.menuitemStatEditor.Size = new System.Drawing.Size(192, 22);
 			this.menuitemStatEditor.Text = "Item Type Editor (Test)";
 			this.menuitemStatEditor.Click += new System.EventHandler(this.menuitemStatEditor_Click);
-			// 
-			// charDetailsToolStripMenuItem
-			// 
-			this.charDetailsToolStripMenuItem.Name = "charDetailsToolStripMenuItem";
-			this.charDetailsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-			this.charDetailsToolStripMenuItem.Text = "CharDetails";
-			this.charDetailsToolStripMenuItem.Click += new System.EventHandler(this.charDetailsToolStripMenuItem_Click);
 			// 
 			// tabCtrlMain
 			// 
@@ -148,7 +139,6 @@
 		private System.Windows.Forms.ToolStripMenuItem dBToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem menuitemStatEditor;
 		private System.Windows.Forms.ToolStripMenuItem loadDatabaseToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem charDetailsToolStripMenuItem;
 		private System.Windows.Forms.TabControl tabCtrlMain;
 	}
 }

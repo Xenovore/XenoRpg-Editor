@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,23 @@ namespace XenoRPGEditor
 		public InventoryManager invManager;
 
 		private CharacterBase _character;
+		private XRpgUtils.ImageAtlas _itemIconsAtlas;
 
+
+		//----------------------------------------------------------------------
 		public FormEditCharacter()
 		{
+			InitializeComponent();
+
+			//TODO: Kind of need the character id; but if none was supplied, do something
+		}
+
+
+		//----------------------------------------------------------------------
+		public FormEditCharacter( uint iCharacterId )
+		{
+			Debug.Assert( iCharacterId > 0 );
+
 			InitializeComponent();
 
 			charManager = FormMain.CharManager;
@@ -37,7 +52,7 @@ namespace XenoRPGEditor
 			*/
 
 			// Load default character
-			_character = charManager.LoadCharacterById( 1 );
+			_character = charManager.LoadCharacterById( iCharacterId );
 			PopulateCharInfo( _character );
 
 			// Load stats...
@@ -51,6 +66,8 @@ namespace XenoRPGEditor
 
 			// Load character inventory...
 			_character._contBody = invManager.LoadContainer( _character.ContBodyId );
+
+			_itemIconsAtlas = new XRpgUtils.ImageAtlas( "Images/RpgInvIcons.png" );
 
 			RefreshSlotView();
 			RefreshTreeView();
@@ -78,7 +95,7 @@ namespace XenoRPGEditor
 
 			// Populate stat type filter combo box...
 			var listStatTypes = charManager.GetStatTypeList();
-			listStatTypes.Insert( 0, new XRpg.StatType() { Id = 0, Name = "All" } );
+			listStatTypes.Insert( 0, new StatType() { Id = 0, Name = "All" } );
 			comboStatTypeFilter.DataSource    = listStatTypes;
 			comboStatTypeFilter.ValueMember   = "Id";
 			comboStatTypeFilter.DisplayMember = "Name";
@@ -110,46 +127,44 @@ namespace XenoRPGEditor
 		{
 			try
 			{
-				//Hide columns...
-				dgv.Columns[ 0 ].Visible = false; // ID
-				dgv.Columns[ 3 ].Visible = false; // Desc
+				dgv.AllowUserToAddRows = false;
+				dgv.AllowUserToDeleteRows = false;
+				dgv.AllowUserToResizeRows = false;
+				//dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-				// Set columns to read-only
-				dgv.Columns[ 1 ].ReadOnly = true;
-				dgv.Columns[ 2 ].ReadOnly = true;
-				dgv.Columns[ 3 ].ReadOnly = true;
+				// Set column properties...
+				dgv.Columns[ "Id" ].Visible = false;
 
-				// Set read-only column colors
-				Color colorPhysAttr = Color.FromArgb( 0xFF, 0xD0, 0xD0 );
-				Color colorMentAttr = Color.FromArgb( 0xFF, 0xD0, 0xFF );
-				Color colorSpecAttr = Color.FromArgb( 0xD0, 0xD0, 0xFF );
-				Color colorResists  = Color.FromArgb( 0xD0, 0xFF, 0xD0 );
-				Color colorSkills   = Color.FromArgb( 0xFF, 0xF0, 0xD0 );
-				Color colorInvalid  = Color.FromArgb( 0xA0, 0xA0, 0xA0 );
+				dgv.Columns[ "TypeId" ].Visible = false;
 
-				// Set tooltips...
-				for ( int i = 0; i < dgv.Rows.Count; ++i )
-				{
-					var row = dgv.Rows[i];
-					const int iTypeColIdx = 4;
-					var strType = row.Cells[iTypeColIdx].Value.ToString();
-					switch ( strType )
-					{
-						case "AttribPhysical": row.Cells[3].Style.BackColor = colorPhysAttr; break;
-						case "AttribMental " : row.Cells[3].Style.BackColor = colorMentAttr; break;
-						case "AttribSpecial" : row.Cells[3].Style.BackColor = colorSpecAttr; break;
-						case "Resistance"    : row.Cells[3].Style.BackColor = colorResists;  break;
-						case "Skill"         : row.Cells[3].Style.BackColor = colorSkills;   break;
-						case "Special"       : row.Cells[3].Style.BackColor = colorInvalid;  break;
-						default              : row.Cells[3].Style.BackColor = colorInvalid;  break;
-					}
-				}
+				dgv.Columns[ "Name" ].ReadOnly = true;
+				dgv.Columns[ "Name" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "Name" ].DisplayIndex = 0;
+				dgv.Columns[ "Name" ].Width = 120;
+
+				dgv.Columns[ "Abbr" ].ReadOnly = true;
+				dgv.Columns[ "Abbr" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "Abbr" ].DisplayIndex = 1;
+				dgv.Columns[ "Abbr" ].Width = 50;
+
+				dgv.Columns[ "Level" ].DisplayIndex = 2;
+				dgv.Columns[ "Level" ].Width = 50;
+
+				dgv.Columns[ "XpToNextLvl" ].DisplayIndex = 3;
+
+				dgv.Columns[ "TypeName" ].ReadOnly = true;
+				dgv.Columns[ "TypeName" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "TypeName" ].DisplayIndex = 4;
+
+				dgv.Columns[ "Description" ].ReadOnly = true;
+				dgv.Columns[ "Description" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "Description" ].DisplayIndex = 5;
+
 
 				//dgv.Columns[ 1 ].DefaultCellStyle.BackColor = colorPhysAttr;
 				//dgv.Columns[ 2 ].DefaultCellStyle.BackColor = colorPhysAttr;
 				//dgv.Columns[ 3 ].DefaultCellStyle.BackColor = colorPhysAttr;
 
-				dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb( 0xD0, 0xD0, 0xFF );
 
 				//dgv.Columns[ 0 ].HeaderText = "Name";
 				//dgv.Columns[ 1 ].HeaderText = "Abbr";
@@ -160,24 +175,44 @@ namespace XenoRPGEditor
 				//dgv.Columns[ 6 ].HeaderText = "XP";
 
 				// Set column widths....
-				dgv.Columns[ 0 ].Width =  0;
-				dgv.Columns[ 1 ].Width = 90;
-				dgv.Columns[ 2 ].Width = 50;
-				dgv.Columns[ 3 ].Width = 40;
-				dgv.Columns[ 4 ].Width = 40;
-				dgv.Columns[ 5 ].Width = 40;
-				dgv.Columns[ 6 ].Width = 40;
+				//TODO: USE COLUMN NAMES
+				//dgv.Columns[ 0 ].Width =  0; //TODO: REMOVE
+				//dgv.Columns[ 1 ].Width = 90;
+				//dgv.Columns[ 2 ].Width = 50;
+				//dgv.Columns[ 3 ].Width = 40;
+				//dgv.Columns[ 4 ].Width = 40;
+				//dgv.Columns[ 5 ].Width = 40;
+				//dgv.Columns[ 6 ].Width = 40;
+
+				// Set read-only column colors
+				Color colorPhysAttr = Color.FromArgb( 0xFF, 0xD0, 0xD0 );
+				Color colorMentAttr = Color.FromArgb( 0xFF, 0xD0, 0xFF );
+				Color colorSpecAttr = Color.FromArgb( 0xD0, 0xD0, 0xFF );
+				Color colorResists  = Color.FromArgb( 0xD0, 0xFF, 0xD0 );
+				Color colorSkills   = Color.FromArgb( 0xFF, 0xF0, 0xD0 );
+				Color colorInvalid  = Color.FromArgb( 0xA0, 0xA0, 0xA0 );
+
+				//NOTE: THIS CODE DOESN'T SEEM TO WORK; NO CELL PROPERTIES EVER CHANGE
+				// Set tooltips...
+				foreach( DataGridViewRow row in dgv.Rows )
+				{
+					StatTypeEnum statType = (StatTypeEnum)Convert.ToInt32( row.Cells["TypeId"].Value.ToString() );
+					switch ( statType )
+					{
+						case StatTypeEnum.AttribPhysical: row.Cells[0].ToolTipText = row.Cells["Description"].Value.ToString() ; break;
+						case StatTypeEnum.AttribMental  : row.Cells[0].Style.ForeColor = colorMentAttr; break;
+						case StatTypeEnum.AttribSpecial : row.Cells[0].Style.ForeColor = colorSpecAttr; break;
+						case StatTypeEnum.Resistance    : row.Cells[0].Style.ForeColor = colorResists;  break;
+						case StatTypeEnum.Skill         : row.Cells[0].Style.ForeColor = colorSkills;   break;
+						case StatTypeEnum.Special       : row.Cells[0].Style.ForeColor = colorInvalid;  break;
+						default                         : row.Cells[0].Style.ForeColor = colorInvalid;  break;
+					}
+				}
 			}
 			catch
 			{
 				; //IGNORE
 			}
-
-			// Set tooltips...
-			//for ( int i = 0; i < dgv.Rows.Count; ++i )
-			//{
-			//	dgv.Rows[i].Cells[1].ToolTipText = dgv.Rows[i].Cells[3].Value.ToString();
-			//}
 		}
 
 
@@ -190,9 +225,26 @@ namespace XenoRPGEditor
 		}
 
 
-		//=====================================================================
-		// FORM UI STUFF
-		//=====================================================================
+		//----------------------------------------------------------------------
+		// comboStatTypeFilter_SelectedIndexChanged()
+		// • Filter stat list based on selected filter
+		//----------------------------------------------------------------------
+		private void comboStatTypeFilter_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			if ( gridCharacterStats.DataSource == null ) return;
+
+			var dt = (gridCharacterStats.DataSource as DataTable);
+			// If "All" is selected, clear the filter...
+			if ( comboStatTypeFilter.SelectedIndex == 0 )
+			{
+				dt.DefaultView.RowFilter = "";
+			}
+			else
+			{
+				dt.DefaultView.RowFilter = $"TypeId='{comboStatTypeFilter.SelectedIndex}'";
+			}
+		}
+
 
 		private void loadFromTestToolStripMenuItem_Click( object sender, EventArgs e )
 		{
@@ -331,7 +383,8 @@ namespace XenoRPGEditor
 				offsetX = count % 5 * ( c_slotExtent + 4 );
 				if ( count % 5 == 0 ) offsetY += c_slotExtent + 4;
 
-				var ctrlSlot = new InvItemControl
+				//var ctrlSlot = new InvItemControl( _itemIconsAtlas.GetSubImageAt( item.IconIndex ) )
+				var ctrlSlot = new InvItemControl()
 				{
 					Text      = item.Name,
 					Location  = new Point( (int)item.PosX + offsetX, (int)item.PosY + offsetY ),
@@ -339,9 +392,8 @@ namespace XenoRPGEditor
 					Height    = (int)item.SizeH * c_slotExtent,
 					Movable   = true,
 					Font      = new Font( "Calibri", 8 ),
-					//TODO: THIS SHOULD USE IMAGE ATLAS
 					BackgroundFilename = "images/InvSlot.png",
-					ItemImageFilename = "images/InvGem.png",
+					//ItemImageFilename = "images/InvGem.png",
 				};
 
 				invContainerSlots.Controls.Add( ctrlSlot );
@@ -429,21 +481,17 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		private void comboStatTypeFilter_SelectedIndexChanged( object sender, EventArgs e )
+		private void buttSave_Click( object sender, EventArgs e )
 		{
-			if ( gridCharacterStats.DataSource == null ) return;
+			//TODO: Save changes to character DB tables
+		}
 
-			// Filter stat list based on selected filter
-			var dt = (gridCharacterStats.DataSource as DataTable);
-			// If "All" is selected, clear the filter...
-			if ( comboStatTypeFilter.SelectedIndex == 0 )
-			{
-				dt.DefaultView.RowFilter = "";
-			}
-			else
-			{
-				dt.DefaultView.RowFilter = $"Type='{comboStatTypeFilter.SelectedIndex}'";
-			}
+
+		//----------------------------------------------------------------------
+		private void buttClose_Click( object sender, EventArgs e )
+		{
+			//TODO: Check for unsaved changes; show confirmation dialog
+			this.Close();
 		}
 	}
 }
