@@ -14,32 +14,13 @@ using XRpg;
 
 namespace XenoRPGEditor
 {
-	public partial class UserCtrlCharactersEditor: UserControl
+	public partial class UserCtrlCharactersView: UserControl
 	{
-		int[] _iColWidths =
-		{
-			50,
-			100,
-			50,
-			55,
-			60,
-			50,
-			50,
-			50,
-			40,
-			45,
-			45,
-			45,
-			45,
-			45,
-			45,
-		};
-
 		bool _bModified = false;
 
 
 		//----------------------------------------------------------------------
-		public UserCtrlCharactersEditor()
+		public UserCtrlCharactersView()
 		{
 			InitializeComponent();
 
@@ -52,13 +33,34 @@ namespace XenoRPGEditor
 		{
 			if ( gv.Columns.Count == 0 ) return;
 
+			//TODO: JUST USE COLUMN NAMES INSTEAD
+
+			int[] iColWidths =
+			{
+				50,
+				100,
+				50,
+				55,
+				60,
+				50,
+				50,
+				50,
+				40,
+				45,
+				45,
+				45,
+				45,
+				45,
+				45,
+			};
+
 			// Use shortest size so we don't run into problems if the number of grid columns
 			// doesn't match the number of elements...
-			int iColMax = Math.Min( gv.Columns.Count, _iColWidths.Length );
+			int iColMax = Math.Min( gv.Columns.Count, iColWidths.Length );
 
 			for ( int i = 0; i < iColMax; ++i )
 			{
-				gv.Columns[ i ].Width = _iColWidths[ i ];
+				gv.Columns[ i ].Width = iColWidths[ i ];
 			}
 
 			// Set last column to fill...

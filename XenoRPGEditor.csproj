@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XRpgUtils\ExtensionMethods.cs" />
     <Compile Include="XRpgUtils\FilterList.cs" />
     <Compile Include="FormCharacterEditor.cs">
       <SubType>Form</SubType>
@@ -121,25 +122,25 @@
     <Compile Include="XRpgCustom\InvItemControl.Designer.cs">
       <DependentUpon>InvItemControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserCtrlCharactersEditor.cs">
+    <Compile Include="UserCtrlCharactersView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserCtrlCharactersEditor.Designer.cs">
-      <DependentUpon>UserCtrlCharactersEditor.cs</DependentUpon>
+    <Compile Include="UserCtrlCharactersView.Designer.cs">
+      <DependentUpon>UserCtrlCharactersView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserCtrlItemsEditor.cs">
+    <Compile Include="UserCtrlItemsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserCtrlItemsEditor.Designer.cs">
-      <DependentUpon>UserCtrlItemsEditor.cs</DependentUpon>
+    <Compile Include="UserCtrlItemsView.Designer.cs">
+      <DependentUpon>UserCtrlItemsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserCtrlStatsEditor.cs">
+    <Compile Include="UserCtrlStatsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserCtrlStatsEditor.Designer.cs">
-      <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
+    <Compile Include="UserCtrlStatsView.Designer.cs">
+      <DependentUpon>UserCtrlStatsView.cs</DependentUpon>
     </Compile>
     <Compile Include="XRpgUtils\ImageAtlas.cs" />
     <EmbeddedResource Include="FormCharacterEditor.resx">
@@ -167,14 +168,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserCtrlCharactersEditor.resx">
-      <DependentUpon>UserCtrlCharactersEditor.cs</DependentUpon>
+    <EmbeddedResource Include="UserCtrlCharactersView.resx">
+      <DependentUpon>UserCtrlCharactersView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserCtrlItemsEditor.resx">
-      <DependentUpon>UserCtrlItemsEditor.cs</DependentUpon>
+    <EmbeddedResource Include="UserCtrlItemsView.resx">
+      <DependentUpon>UserCtrlItemsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserCtrlStatsEditor.resx">
-      <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
+    <EmbeddedResource Include="UserCtrlStatsView.resx">
+      <DependentUpon>UserCtrlStatsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\KevInvTest.Source.RpgItem.datasource">

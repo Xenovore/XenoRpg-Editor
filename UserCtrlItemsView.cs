@@ -11,12 +11,12 @@ using XRpg;
 
 namespace XenoRPGEditor
 {
-	public partial class UserCtrlItemsEditor: UserControl
+	public partial class UserCtrlItemsView: UserControl
 	{
 		bool m_bModified = false;
 
 		//----------------------------------------------------------------------
-		public UserCtrlItemsEditor()
+		public UserCtrlItemsView()
 		{
 			InitializeComponent();
 		}

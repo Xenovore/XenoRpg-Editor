@@ -9,14 +9,14 @@ using XRpg;
 
 namespace XenoRPGEditor
 {
-	public partial class UserCtrlStatsEditor: UserControl
+	public partial class UserCtrlStatsView: UserControl
 	{
 		bool m_bAttribsModified = false;
 		Dictionary<int, StatType> _listStatTypes;
 		public BindingSource bsStats { get; set; }
 
 		//----------------------------------------------------------------------
-		public UserCtrlStatsEditor()
+		public UserCtrlStatsView()
 		{
 			InitializeComponent();
 		}

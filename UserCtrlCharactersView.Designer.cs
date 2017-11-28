@@ -1,6 +1,6 @@
 ﻿namespace XenoRPGEditor
 {
-    partial class UserCtrlCharactersEditor
+    partial class UserCtrlCharactersView
     {
         /// <summary>
         /// Required designer variable.
