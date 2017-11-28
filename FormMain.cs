@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using XRpg;
-
+using ExtensionMethods;
 
 namespace XenoRPGEditor
 {
@@ -32,7 +32,6 @@ namespace XenoRPGEditor
 		//<<<<<*/
 
 
-
 		//----------------------------------------------------------------------
 		// AddCtrlTab( <user control> )
 		// • Adds <user control> as tab to tabCtrlMain
@@ -55,23 +54,19 @@ namespace XenoRPGEditor
 			InitializeComponent();
 
 			CharManager = new CharacterManager();
-
-			var ucCharacters = new UserCtrlCharactersEditor();
-			AddCtrlTab( ucCharacters, "Characters" );
-
-			var ucStats = new UserCtrlStatsEditor();
-			AddCtrlTab( ucStats, "Stats" );
-
-
 			InvManager = new InventoryManager();
 
-			var ucItems = new UserCtrlItemsEditor();
-			AddCtrlTab( ucItems, "Items" );
+			var ucCharacters = new UserCtrlCharactersView();
+			tabCtrlMain.AddUserControlTab( ucCharacters, "Characters" );
 
-			//TODO: Character editor
-			//TODO: Effect editor
-			//TODO: Spell editor
+			var ucStats = new UserCtrlStatsView();
+			tabCtrlMain.AddUserControlTab( ucStats, "Stats" );
 
+			var ucItems = new UserCtrlItemsView();
+			tabCtrlMain.AddUserControlTab( ucItems, "Items" );
+
+			//TODO: Effects
+			//TODO: Spells
 
 		}
 

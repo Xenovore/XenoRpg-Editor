@@ -26,7 +26,7 @@ namespace XenoRPGEditor
 		{
 			InitializeComponent();
 
-			//TODO: Kind of need the character id; but if none was supplied, do something
+			//TODO: Kind of need the character ID; but if none was supplied, do something, e.g. ask for ID
 		}
 
 
