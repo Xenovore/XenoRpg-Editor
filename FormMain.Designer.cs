@@ -63,18 +63,18 @@
 			// loadDatabaseToolStripMenuItem
 			// 
 			this.loadDatabaseToolStripMenuItem.Name = "loadDatabaseToolStripMenuItem";
-			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.loadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
 			this.loadDatabaseToolStripMenuItem.Text = "Open...";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(109, 6);
 			// 
 			// mnuitmExit
 			// 
 			this.mnuitmExit.Name = "mnuitmExit";
-			this.mnuitmExit.Size = new System.Drawing.Size(152, 22);
+			this.mnuitmExit.Size = new System.Drawing.Size(112, 22);
 			this.mnuitmExit.Text = "Exit";
 			this.mnuitmExit.Click += new System.EventHandler(this.mnuitmExit_Click);
 			// 
@@ -98,6 +98,7 @@
 			this.tabCtrlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabCtrlMain.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tabCtrlMain.Location = new System.Drawing.Point(0, 27);
 			this.tabCtrlMain.Name = "tabCtrlMain";
 			this.tabCtrlMain.SelectedIndex = 0;

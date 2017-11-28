@@ -76,11 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="XRpgUtils\FilterList.cs" />
-    <Compile Include="FormEditCharacter.cs">
+    <Compile Include="FormCharacterEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditCharacter.Designer.cs">
-      <DependentUpon>FormEditCharacter.cs</DependentUpon>
+    <Compile Include="FormCharacterEditor.Designer.cs">
+      <DependentUpon>FormCharacterEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditModifiers.cs">
       <SubType>Form</SubType>
@@ -142,8 +142,8 @@
       <DependentUpon>UserCtrlStatsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="XRpgUtils\ImageAtlas.cs" />
-    <EmbeddedResource Include="FormEditCharacter.resx">
-      <DependentUpon>FormEditCharacter.cs</DependentUpon>
+    <EmbeddedResource Include="FormCharacterEditor.resx">
+      <DependentUpon>FormCharacterEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditItem.resx">
       <DependentUpon>FormEditItem.cs</DependentUpon>

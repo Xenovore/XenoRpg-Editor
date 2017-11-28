@@ -83,7 +83,7 @@ namespace XenoRPGEditor
 
 		private void button1_Click_2( object sender, EventArgs e )
 		{
-			var form = new FormEditCharacter();
+			var form = new FormCharacterEditor();
 			form.ShowDialog();
 		}
 
@@ -96,7 +96,7 @@ namespace XenoRPGEditor
 
 		private void charDetailsToolStripMenuItem_Click( object sender, EventArgs e )
 		{
-			var form = new FormEditCharacter();
+			var form = new FormCharacterEditor();
 			form.ShowDialog();
 		}
 

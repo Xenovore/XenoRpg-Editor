@@ -12,7 +12,7 @@ using XRpg;
 
 namespace XenoRPGEditor
 {
-	public partial class FormEditCharacter: Form
+	public partial class FormCharacterEditor: Form
 	{
 		public CharacterManager charManager;
 		public InventoryManager invManager;
@@ -22,7 +22,7 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		public FormEditCharacter()
+		public FormCharacterEditor()
 		{
 			InitializeComponent();
 
@@ -31,7 +31,7 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		public FormEditCharacter( uint iCharacterId )
+		public FormCharacterEditor( uint iCharacterId )
 		{
 			Debug.Assert( iCharacterId > 0 );
 

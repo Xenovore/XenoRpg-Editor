@@ -103,10 +103,7 @@ namespace XenoRPGEditor
 			InitGrid();
 			SetColWidths( dgvCharacters );
 
-			//dataGridView1.Columns[ 2 ].HeaderText = "Type";
-			//dataGridView1.Columns[ 3 ].HeaderText = "Wt";
-			//dataGridView1.Columns[ 6 ].HeaderText = "Qty";
-			//dataGridView1.Columns[ 7 ].HeaderText = "Qty Cap";
+			comboSearchBy.SelectedIndex = 0;
 		}
 
 
@@ -222,11 +219,21 @@ namespace XenoRPGEditor
 			SetModified( ( result == DialogResult.Yes ) );
 		}
 
+
+		//----------------------------------------------------------------------
 		private void dgvCharacters_CellDoubleClick( object sender, DataGridViewCellEventArgs e )
 		{
 			uint id = (uint)dgvCharacters.Rows[e.RowIndex].Cells["Id"].Value;
-			var form = new FormEditCharacter( id );
+			var form = new FormCharacterEditor( id );
 			form.ShowDialog();
+		}
+
+
+		//----------------------------------------------------------------------
+		private void buttResetSearch_Click( object sender, EventArgs e )
+		{
+			textSearchFor.Text = "";
+			//TODO: Reset gridview
 		}
 	}
 }
