@@ -33,22 +33,6 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		// AddCtrlTab( <user control> )
-		// • Adds <user control> as tab to tabCtrlMain
-		//----------------------------------------------------------------------
-		private void AddCtrlTab( UserControl uc, string strTabName )
-		{
-			var tabNew = new TabPage( strTabName );
-
-			uc.Dock     = DockStyle.Fill;
-			uc.AutoSize = true;
-
-			tabNew.Controls.Add( uc );
-			tabCtrlMain.TabPages.Add( tabNew );
-		}
-
-
-		//----------------------------------------------------------------------
 		public FormMain()
 		{
 			InitializeComponent();
