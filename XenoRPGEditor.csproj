@@ -75,6 +75,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserCtrlCharacterEditInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrlCharacterEditInfo.Designer.cs">
+      <DependentUpon>UserCtrlCharacterEditInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrlCharacterEditInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrlCharacterEditInventory.Designer.cs">
+      <DependentUpon>UserCtrlCharacterEditInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="XRpgUtils\ExtensionMethods.cs" />
     <Compile Include="XRpgUtils\FilterList.cs" />
     <Compile Include="FormCharacterEditor.cs">
@@ -154,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditItemType.resx">
       <DependentUpon>FormEditItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrlCharacterEditInfo.resx">
+      <DependentUpon>UserCtrlCharacterEditInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrlCharacterEditInventory.resx">
+      <DependentUpon>UserCtrlCharacterEditInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XRpgCustom\InvContainerControl.resx">
       <DependentUpon>InvContainerControl.cs</DependentUpon>
