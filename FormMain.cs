@@ -7,9 +7,6 @@ namespace XenoRPGEditor
 {
 	public partial class FormMain: Form
 	{
-		public static CharacterManager CharManager { get; set; }
-		public static InventoryManager InvManager { get; set; }
-
 		//----------------------------------------------------------------------
 		// AddFormTab( <form> )
 		// • Adds <form> as tab to tabCtrlMain
@@ -36,9 +33,6 @@ namespace XenoRPGEditor
 		public FormMain()
 		{
 			InitializeComponent();
-
-			CharManager = new CharacterManager();
-			InvManager = new InventoryManager();
 
 			var ucCharacters = new UserCtrlCharactersView();
 			tabCtrlMain.AddUserControlTab( ucCharacters, "Characters" );

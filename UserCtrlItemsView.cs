@@ -38,7 +38,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void LoadItemsTable()
 		{
-			List<Item> listItems = FormMain.InvManager.LoadAllItems();
+			List<Item> listItems = InventoryManager.LoadAllItems();
 
 			gridview.DataSource = listItems;
 

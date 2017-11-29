@@ -47,7 +47,8 @@
             this.dBToolStripMenuItem});
 			this.menuMain.Location = new System.Drawing.Point(0, 0);
 			this.menuMain.Name = "menuMain";
-			this.menuMain.Size = new System.Drawing.Size(1201, 24);
+			this.menuMain.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+			this.menuMain.Size = new System.Drawing.Size(1184, 24);
 			this.menuMain.TabIndex = 0;
 			// 
 			// fileToolStripMenuItem
@@ -102,25 +103,24 @@
 			this.tabCtrlMain.Location = new System.Drawing.Point(0, 27);
 			this.tabCtrlMain.Name = "tabCtrlMain";
 			this.tabCtrlMain.SelectedIndex = 0;
-			this.tabCtrlMain.Size = new System.Drawing.Size(1199, 931);
+			this.tabCtrlMain.Size = new System.Drawing.Size(1181, 892);
 			this.tabCtrlMain.TabIndex = 20;
 			// 
 			// FormMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(208)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-			this.ClientSize = new System.Drawing.Size(1201, 960);
+			this.ClientSize = new System.Drawing.Size(1184, 921);
 			this.Controls.Add(this.tabCtrlMain);
 			this.Controls.Add(this.menuMain);
-			this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.IsMdiContainer = true;
 			this.MainMenuStrip = this.menuMain;
-			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(500, 520);
+			this.MinimumSize = new System.Drawing.Size(640, 480);
 			this.Name = "FormMain";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.Text = "XenoRPG Editor";

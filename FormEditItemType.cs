@@ -33,7 +33,7 @@ namespace XenoRPGEditor
 		private void LoadItemTypes()
 		{
 			// Used to load values for listview
-			_collectionItemTypes = FormMain.InvManager.LoadItemTypes();
+			_collectionItemTypes = InventoryManager.LoadItemTypes();
 		}
 
 

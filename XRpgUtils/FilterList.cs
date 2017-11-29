@@ -17,8 +17,8 @@ namespace XenoRPGEditor
 		private bool   _isFiltered = false;
 		private bool   _isSorted = false;
 
-		private ListSortDirection _sortDirection = ListSortDirection.Ascending;
-		private PropertyDescriptor _sortProperty = null;
+		//private ListSortDirection _sortDirection = ListSortDirection.Ascending;
+		//private PropertyDescriptor _sortProperty = null;
 		private ListSortDescriptionCollection _sortDescriptions = new ListSortDescriptionCollection();
 
 		public string Filter
@@ -138,7 +138,7 @@ namespace XenoRPGEditor
 
 		void IBindingListView.ApplySort( ListSortDescriptionCollection sorts )
 		{
-			_sortProperty = null;
+			//_sortProperty = null;
 			_sortDescriptions = sorts;
 			SortComparer<T> comparer = new SortComparer<T>( sorts );
 			ApplySortInternal( comparer );

@@ -91,7 +91,7 @@ namespace XenoRPGEditor
 		//----------------------------------------------------------------------
 		private void LoadCharactersTable()
 		{
-			List<CharacterBase> listCharacters = FormMain.CharManager.LoadAllCharacters();
+			List<CharacterBase> listCharacters = CharacterManager.LoadAllCharacters();
 
 			dgvCharacters.DataSource = listCharacters;
 
