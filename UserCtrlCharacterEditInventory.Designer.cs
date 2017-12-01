@@ -32,10 +32,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.splitContInventory = new System.Windows.Forms.SplitContainer();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPageEquipped = new System.Windows.Forms.TabPage();
 			this.invContainerSlots = new XenoRPGEditor.InvContainerControl();
-			this.tabPageTreeView = new System.Windows.Forms.TabPage();
 			this.treeviewInv = new System.Windows.Forms.TreeView();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
@@ -53,9 +50,6 @@
 			this.splitContInventory.Panel1.SuspendLayout();
 			this.splitContInventory.Panel2.SuspendLayout();
 			this.splitContInventory.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.tabPageEquipped.SuspendLayout();
-			this.tabPageTreeView.SuspendLayout();
 			this.menuTree.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -77,9 +71,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.Controls.Add(this.splitContInventory);
-			this.panel2.Location = new System.Drawing.Point(9, 31);
+			this.panel2.Location = new System.Drawing.Point(3, 31);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(770, 695);
+			this.panel2.Size = new System.Drawing.Size(1083, 847);
 			this.panel2.TabIndex = 20;
 			// 
 			// splitContInventory
@@ -92,42 +86,18 @@
 			// splitContInventory.Panel1
 			// 
 			this.splitContInventory.Panel1.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
-			this.splitContInventory.Panel1.Controls.Add(this.tabControl1);
+			this.splitContInventory.Panel1.Controls.Add(this.invContainerSlots);
 			this.splitContInventory.Panel1.Controls.Add(this.label7);
+			this.splitContInventory.Panel1.Controls.Add(this.invContainerSelected);
 			// 
 			// splitContInventory.Panel2
 			// 
 			this.splitContInventory.Panel2.BackgroundImage = global::XenoRPGEditor.Properties.Resources.formBG;
+			this.splitContInventory.Panel2.Controls.Add(this.treeviewInv);
 			this.splitContInventory.Panel2.Controls.Add(this.label8);
-			this.splitContInventory.Panel2.Controls.Add(this.invContainerSelected);
-			this.splitContInventory.Size = new System.Drawing.Size(770, 695);
-			this.splitContInventory.SplitterDistance = 383;
+			this.splitContInventory.Size = new System.Drawing.Size(1083, 847);
+			this.splitContInventory.SplitterDistance = 538;
 			this.splitContInventory.TabIndex = 0;
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.tabPageEquipped);
-			this.tabControl1.Controls.Add(this.tabPageTreeView);
-			this.tabControl1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tabControl1.Location = new System.Drawing.Point(3, 22);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(375, 669);
-			this.tabControl1.TabIndex = 28;
-			// 
-			// tabPageEquipped
-			// 
-			this.tabPageEquipped.Controls.Add(this.invContainerSlots);
-			this.tabPageEquipped.Location = new System.Drawing.Point(4, 25);
-			this.tabPageEquipped.Name = "tabPageEquipped";
-			this.tabPageEquipped.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageEquipped.Size = new System.Drawing.Size(367, 640);
-			this.tabPageEquipped.TabIndex = 0;
-			this.tabPageEquipped.Text = "Slots";
-			this.tabPageEquipped.UseVisualStyleBackColor = true;
 			// 
 			// invContainerSlots
 			// 
@@ -139,23 +109,12 @@
 			this.invContainerSlots.GradientAngle = 55;
 			this.invContainerSlots.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
 			this.invContainerSlots.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
-			this.invContainerSlots.Location = new System.Drawing.Point(0, 0);
+			this.invContainerSlots.Location = new System.Drawing.Point(5, 21);
 			this.invContainerSlots.Name = "invContainerSlots";
-			this.invContainerSlots.Size = new System.Drawing.Size(367, 638);
+			this.invContainerSlots.Size = new System.Drawing.Size(522, 390);
 			this.invContainerSlots.TabIndex = 25;
 			this.invContainerSlots.Text = "invContainerControl2";
 			this.invContainerSlots.UIScale = 0F;
-			// 
-			// tabPageTreeView
-			// 
-			this.tabPageTreeView.Controls.Add(this.treeviewInv);
-			this.tabPageTreeView.Location = new System.Drawing.Point(4, 25);
-			this.tabPageTreeView.Name = "tabPageTreeView";
-			this.tabPageTreeView.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageTreeView.Size = new System.Drawing.Size(367, 640);
-			this.tabPageTreeView.TabIndex = 1;
-			this.tabPageTreeView.Text = "Tree View";
-			this.tabPageTreeView.UseVisualStyleBackColor = true;
 			// 
 			// treeviewInv
 			// 
@@ -165,9 +124,9 @@
 			this.treeviewInv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
 			this.treeviewInv.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.treeviewInv.LineColor = System.Drawing.Color.DarkGray;
-			this.treeviewInv.Location = new System.Drawing.Point(8, 6);
+			this.treeviewInv.Location = new System.Drawing.Point(5, 21);
 			this.treeviewInv.Name = "treeviewInv";
-			this.treeviewInv.Size = new System.Drawing.Size(355, 634);
+			this.treeviewInv.Size = new System.Drawing.Size(513, 805);
 			this.treeviewInv.TabIndex = 22;
 			// 
 			// label7
@@ -202,9 +161,9 @@
 			this.invContainerSelected.GradientAngle = 55;
 			this.invContainerSelected.GradientColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
 			this.invContainerSelected.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(174)))), ((int)(((byte)(155)))));
-			this.invContainerSelected.Location = new System.Drawing.Point(6, 20);
+			this.invContainerSelected.Location = new System.Drawing.Point(6, 547);
 			this.invContainerSelected.Name = "invContainerSelected";
-			this.invContainerSelected.Size = new System.Drawing.Size(367, 665);
+			this.invContainerSelected.Size = new System.Drawing.Size(522, 279);
 			this.invContainerSelected.TabIndex = 24;
 			this.invContainerSelected.Text = "invContainerControl1";
 			this.invContainerSelected.UIScale = 0F;
@@ -220,7 +179,7 @@
             this.miExpand,
             this.miExpandAll});
 			this.menuTree.Name = "menuTree";
-			this.menuTree.Size = new System.Drawing.Size(159, 164);
+			this.menuTree.Size = new System.Drawing.Size(159, 142);
 			// 
 			// loadFromTestToolStripMenuItem
 			// 
@@ -278,9 +237,6 @@
 			this.splitContInventory.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContInventory)).EndInit();
 			this.splitContInventory.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
-			this.tabPageEquipped.ResumeLayout(false);
-			this.tabPageTreeView.ResumeLayout(false);
 			this.menuTree.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -292,10 +248,7 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.SplitContainer splitContInventory;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPageEquipped;
 		private InvContainerControl invContainerSlots;
-		private System.Windows.Forms.TabPage tabPageTreeView;
 		private System.Windows.Forms.TreeView treeviewInv;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;

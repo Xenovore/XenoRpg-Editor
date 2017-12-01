@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgvCharacters = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboSearchBy = new System.Windows.Forms.ComboBox();
@@ -45,33 +45,34 @@
 			// dgvCharacters
 			// 
 			this.dgvCharacters.AllowUserToResizeRows = false;
-			dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
-			this.dgvCharacters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(255)))));
+			this.dgvCharacters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvCharacters.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.dgvCharacters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCharacters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCharacters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvCharacters.EnableHeadersVisualStyles = false;
 			this.dgvCharacters.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.dgvCharacters.Location = new System.Drawing.Point(11, 39);
-			this.dgvCharacters.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.dgvCharacters.Margin = new System.Windows.Forms.Padding(5);
 			this.dgvCharacters.MultiSelect = false;
 			this.dgvCharacters.Name = "dgvCharacters";
 			this.dgvCharacters.ReadOnly = true;
 			this.dgvCharacters.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvCharacters.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvCharacters.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvCharacters.RowHeadersWidth = 24;
 			this.dgvCharacters.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dgvCharacters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvCharacters.Size = new System.Drawing.Size(825, 490);
 			this.dgvCharacters.TabIndex = 6;
 			this.dgvCharacters.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCharacters_CellDoubleClick);
@@ -99,7 +100,7 @@
             "Race",
             "Level"});
 			this.comboSearchBy.Location = new System.Drawing.Point(397, 539);
-			this.comboSearchBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.comboSearchBy.Margin = new System.Windows.Forms.Padding(4);
 			this.comboSearchBy.MaxDropDownItems = 5;
 			this.comboSearchBy.Name = "comboSearchBy";
 			this.comboSearchBy.Size = new System.Drawing.Size(265, 26);
@@ -136,7 +137,7 @@
 			this.textSearchFor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.textSearchFor.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textSearchFor.Location = new System.Drawing.Point(72, 539);
-			this.textSearchFor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.textSearchFor.Margin = new System.Windows.Forms.Padding(4);
 			this.textSearchFor.Name = "textSearchFor";
 			this.textSearchFor.Size = new System.Drawing.Size(241, 26);
 			this.textSearchFor.TabIndex = 24;
@@ -160,7 +161,7 @@
 			this.buttResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttResetSearch.Font = new System.Drawing.Font("Wingdings 2", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
 			this.buttResetSearch.Location = new System.Drawing.Point(314, 539);
-			this.buttResetSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.buttResetSearch.Margin = new System.Windows.Forms.Padding(4);
 			this.buttResetSearch.Name = "buttResetSearch";
 			this.buttResetSearch.Size = new System.Drawing.Size(24, 26);
 			this.buttResetSearch.TabIndex = 26;
@@ -168,7 +169,7 @@
 			this.buttResetSearch.UseVisualStyleBackColor = true;
 			this.buttResetSearch.Click += new System.EventHandler(this.buttResetSearch_Click);
 			// 
-			// UserCtrlCharactersEditor
+			// UserCtrlCharactersView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,8 +184,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dgvCharacters);
 			this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.Name = "UserCtrlCharactersEditor";
+			this.Margin = new System.Windows.Forms.Padding(4);
+			this.Name = "UserCtrlCharactersView";
 			this.Size = new System.Drawing.Size(851, 589);
 			this.Load += new System.EventHandler(this.Editor_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgvCharacters)).EndInit();

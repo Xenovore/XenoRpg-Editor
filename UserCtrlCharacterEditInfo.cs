@@ -116,26 +116,27 @@ namespace XenoRPGEditor
 
 				dgv.Columns[ "Name" ].ReadOnly = true;
 				dgv.Columns[ "Name" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
-				dgv.Columns[ "Name" ].DisplayIndex = 0;
+				dgv.Columns[ "Name" ].DisplayIndex = 2;
 				dgv.Columns[ "Name" ].Width = 120;
 
 				dgv.Columns[ "Abbr" ].ReadOnly = true;
 				dgv.Columns[ "Abbr" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
-				dgv.Columns[ "Abbr" ].DisplayIndex = 1;
+				dgv.Columns[ "Abbr" ].DisplayIndex = 3;
 				dgv.Columns[ "Abbr" ].Width = 50;
 
-				dgv.Columns[ "Level" ].DisplayIndex = 2;
+				dgv.Columns[ "Level" ].DisplayIndex = 4;
 				dgv.Columns[ "Level" ].Width = 50;
 
-				dgv.Columns[ "XpToNextLvl" ].DisplayIndex = 3;
+				dgv.Columns[ "XpToNextLvl" ].DisplayIndex = 5;
 
 				dgv.Columns[ "TypeName" ].ReadOnly = true;
-				dgv.Columns[ "TypeName" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
-				dgv.Columns[ "TypeName" ].DisplayIndex = 4;
+				//dgv.Columns[ "TypeName" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "TypeName" ].DisplayIndex = 6;
 
 				dgv.Columns[ "Description" ].ReadOnly = true;
-				dgv.Columns[ "Description" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
-				dgv.Columns[ "Description" ].DisplayIndex = 5;
+				//dgv.Columns[ "Description" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xFF, 0xF0, 0xF0 );
+				dgv.Columns[ "Description" ].DisplayIndex = 7;
+				dgv.Columns[ "Description" ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
 				//dgv.Columns[ 1 ].DefaultCellStyle.BackColor = colorPhysAttr;
