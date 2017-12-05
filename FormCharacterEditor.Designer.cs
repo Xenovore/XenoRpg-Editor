@@ -58,7 +58,7 @@
 			this.buttSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttSave.Enabled = false;
 			this.buttSave.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttSave.Location = new System.Drawing.Point(7, 726);
+			this.buttSave.Location = new System.Drawing.Point(7, 790);
 			this.buttSave.Name = "buttSave";
 			this.buttSave.Size = new System.Drawing.Size(120, 32);
 			this.buttSave.TabIndex = 21;
@@ -70,7 +70,7 @@
 			// 
 			this.buttClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.buttClose.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttClose.Location = new System.Drawing.Point(133, 726);
+			this.buttClose.Location = new System.Drawing.Point(133, 790);
 			this.buttClose.Name = "buttClose";
 			this.buttClose.Size = new System.Drawing.Size(120, 32);
 			this.buttClose.TabIndex = 22;
@@ -98,7 +98,7 @@
 			this.tabControl.Location = new System.Drawing.Point(0, 0);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(1216, 725);
+			this.tabControl.Size = new System.Drawing.Size(1209, 789);
 			this.tabControl.TabIndex = 24;
 			// 
 			// FormCharacterEditor
@@ -106,7 +106,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1216, 764);
+			this.ClientSize = new System.Drawing.Size(1209, 828);
 			this.Controls.Add(this.tabControl);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.buttClose);

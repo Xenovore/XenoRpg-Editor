@@ -35,14 +35,15 @@ namespace XenoRPGEditor
 			*/
 
 			// Load default character
-			var _character = CharacterManager.LoadCharacterById( iCharacterId );
-			PopulateCharInfo( _character );
+			var character = CharacterManager.LoadCharacterById( iCharacterId );
+			PopulateCharInfo( character );
 
-			// Load stats...
-			var listCharStats = CharacterManager.LoadCharacterStats( _character.Id );
+			// Load all stats...
+			character.ListAllStats = CharacterManager.LoadCharacterStats( character.Id );
+			textLevel.Text = $"{(int)character.CalculateCharacterLevel()}";
 
 			// Must have DataTable in order to filter...
-			DataTable dt = ToDataTable( listCharStats );
+			DataTable dt = ToDataTable( character.ListAllStats );
 
 			gridCharacterStats.DataSource = dt;
 			AdjustGrid( gridCharacterStats );
@@ -81,21 +82,21 @@ namespace XenoRPGEditor
 
 			// Populate species and profession combo boxes
 			var listSpecies = CharacterManager.GetSpeciesList();
-			comboRace.DataSource    = listSpecies;
-			comboRace.ValueMember   = "Id";
-			comboRace.DisplayMember = "Name";
+			cbRace.DataSource    = listSpecies;
+			cbRace.ValueMember   = "Id";
+			cbRace.DisplayMember = "Name";
 
 			var listProfs = CharacterManager.GetProfessionList();
-			comboProfession.DataSource    = listProfs;
-			comboProfession.ValueMember   = "Id";
-			comboProfession.DisplayMember = "Name";
+			cbProfession.DataSource    = listProfs;
+			cbProfession.ValueMember   = "Id";
+			cbProfession.DisplayMember = "Name";
 
 			// Populate stat type filter combo box...
 			var listStatTypes = CharacterManager.GetStatTypeList();
 			listStatTypes.Insert( 0, new StatType() { Id = 0, Name = "All" } );
-			comboStatTypeFilter.DataSource    = listStatTypes;
-			comboStatTypeFilter.ValueMember   = "Id";
-			comboStatTypeFilter.DisplayMember = "Name";
+			cbStatTypeFilter.DataSource    = listStatTypes;
+			cbStatTypeFilter.ValueMember   = "Id";
+			cbStatTypeFilter.DisplayMember = "Name";
 		}
 
 
@@ -115,14 +116,12 @@ namespace XenoRPGEditor
 				dgv.Columns[ "TypeId" ].Visible = false;
 
 				dgv.Columns[ "Name" ].ReadOnly = true;
-				dgv.Columns[ "Name" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
 				dgv.Columns[ "Name" ].DisplayIndex = 2;
-				dgv.Columns[ "Name" ].Width = 120;
+				dgv.Columns[ "Name" ].Width = 150;
 
 				dgv.Columns[ "Abbr" ].ReadOnly = true;
-				dgv.Columns[ "Abbr" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
 				dgv.Columns[ "Abbr" ].DisplayIndex = 3;
-				dgv.Columns[ "Abbr" ].Width = 50;
+				dgv.Columns[ "Abbr" ].Width = 60;
 
 				dgv.Columns[ "Level" ].DisplayIndex = 4;
 				dgv.Columns[ "Level" ].Width = 50;
@@ -131,11 +130,12 @@ namespace XenoRPGEditor
 
 				dgv.Columns[ "TypeName" ].ReadOnly = true;
 				//dgv.Columns[ "TypeName" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xF0, 0xF0, 0xF0 );
+				dgv.Columns[ "TypeName" ].HeaderText = "Type";
 				dgv.Columns[ "TypeName" ].DisplayIndex = 6;
+				dgv.Columns[ "TypeName" ].Width = 140;
 
 				dgv.Columns[ "Description" ].ReadOnly = true;
 				//dgv.Columns[ "Description" ].DefaultCellStyle.BackColor = Color.FromArgb( 0xFF, 0xF0, 0xF0 );
-				dgv.Columns[ "Description" ].DisplayIndex = 7;
 				dgv.Columns[ "Description" ].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
@@ -170,22 +170,7 @@ namespace XenoRPGEditor
 				Color colorSkills   = Color.FromArgb( 0xFF, 0xF0, 0xD0 );
 				Color colorInvalid  = Color.FromArgb( 0xA0, 0xA0, 0xA0 );
 
-				//NOTE: THIS CODE DOESN'T SEEM TO WORK; NO CELL PROPERTIES EVER CHANGE
-				// Set tooltips...
-				foreach( DataGridViewRow row in dgv.Rows )
-				{
-					StatTypeEnum statType = (StatTypeEnum)Convert.ToInt32( row.Cells["TypeId"].Value.ToString() );
-					switch ( statType )
-					{
-						case StatTypeEnum.AttribPhysical: row.Cells[0].ToolTipText = row.Cells["Description"].Value.ToString() ; break;
-						case StatTypeEnum.AttribMental  : row.Cells[0].Style.ForeColor = colorMentAttr; break;
-						case StatTypeEnum.AttribSpecial : row.Cells[0].Style.ForeColor = colorSpecAttr; break;
-						case StatTypeEnum.Resistance    : row.Cells[0].Style.ForeColor = colorResists;  break;
-						case StatTypeEnum.Skill         : row.Cells[0].Style.ForeColor = colorSkills;   break;
-						case StatTypeEnum.Special       : row.Cells[0].Style.ForeColor = colorInvalid;  break;
-						default                         : row.Cells[0].Style.ForeColor = colorInvalid;  break;
-					}
-				}
+				//TODO: Set description tooltips...
 			}
 			catch
 			{
@@ -204,15 +189,24 @@ namespace XenoRPGEditor
 
 			var dt = (gridCharacterStats.DataSource as DataTable);
 			// If "All" is selected, clear the filter...
-			if ( comboStatTypeFilter.SelectedIndex == 0 )
+			if ( cbStatTypeFilter.SelectedIndex == 0 )
 			{
 				dt.DefaultView.RowFilter = "";
 			}
 			else
 			{
-				dt.DefaultView.RowFilter = $"TypeId='{comboStatTypeFilter.SelectedIndex}'";
+				dt.DefaultView.RowFilter = $"TypeId='{cbStatTypeFilter.SelectedIndex}'";
 			}
 		}
 
+		private void gridCharacterStats_MouseEnter( object sender, EventArgs e )
+		{
+			gridCharacterStats.Focus();
+		}
+
+		private void gridCharacterStats_MouseLeave( object sender, EventArgs e )
+		{
+			panel3.Focus();
+		}
 	}
 }

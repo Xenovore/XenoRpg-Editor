@@ -29,38 +29,37 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
+		private void Editor_Load( object sender, EventArgs e )
+		{
+			LoadCharactersTable();
+			InitGrid();
+			SetColWidths( dgvCharacters );
+
+			comboSearchBy.SelectedIndex = 0;
+		}
+
+
+		//----------------------------------------------------------------------
 		private void SetColWidths( DataGridView gv )
 		{
 			if ( gv.Columns.Count == 0 ) return;
 
-			//TODO: JUST USE COLUMN NAMES INSTEAD
-
-			int[] iColWidths =
+			try
 			{
-				50,
-				100,
-				50,
-				55,
-				60,
-				50,
-				50,
-				50,
-				40,
-				45,
-				45,
-				45,
-				45,
-				45,
-				45,
-			};
+				gv.Columns["Id"].Visible = true; //TODO: to hide or not to hide..
 
-			// Use shortest size so we don't run into problems if the number of grid columns
-			// doesn't match the number of elements...
-			int iColMax = Math.Min( gv.Columns.Count, iColWidths.Length );
-
-			for ( int i = 0; i < iColMax; ++i )
+				gv.Columns["Type"].Width     = 60;
+				gv.Columns["Name"].Width     = 100;
+				gv.Columns["NameLast"].Width = 120;
+				gv.Columns["Title"].Width    = 100;
+				gv.Columns["Age"].Width      = 60;
+				gv.Columns["Gender"].Width   = 80;
+				gv.Columns["Level"].Width    = 60;
+				gv.Columns["XPPool"].Width   = 100;
+			}
+			catch
 			{
-				gv.Columns[ i ].Width = iColWidths[ i ];
+				; //ignore; problem is likely a wrong column name
 			}
 
 			// Set last column to fill...
@@ -95,17 +94,6 @@ namespace XenoRPGEditor
 
 			dgvCharacters.DataSource = listCharacters;
 
-		}
-
-
-		//----------------------------------------------------------------------
-		private void Editor_Load( object sender, EventArgs e )
-		{
-			LoadCharactersTable();
-			InitGrid();
-			SetColWidths( dgvCharacters );
-
-			comboSearchBy.SelectedIndex = 0;
 		}
 
 
