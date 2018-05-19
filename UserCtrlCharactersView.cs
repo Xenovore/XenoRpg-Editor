@@ -190,7 +190,7 @@ namespace XenoRPGEditor
 		private void gridItems_RowHeaderMouseDoubleClick( object sender, DataGridViewCellMouseEventArgs e )
 		{
 			//TODO: Create the form once above...
-			var form = new FormEditItem();
+			var form = new FormItemEditor();
 			var table = ( DataTable )dgvCharacters.DataSource;
 
 			// If clicking on bottom row, add new item...

@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormStatEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatEditor.Designer.cs">
+      <DependentUpon>FormStatEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserCtrlCharacterEditInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,11 +113,11 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditItem.cs">
+    <Compile Include="FormItemEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditItem.Designer.cs">
-      <DependentUpon>FormEditItem.cs</DependentUpon>
+    <Compile Include="FormItemEditor.Designer.cs">
+      <DependentUpon>FormItemEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditItemType.cs">
       <SubType>Form</SubType>
@@ -158,14 +164,17 @@
     <EmbeddedResource Include="FormCharacterEditor.resx">
       <DependentUpon>FormCharacterEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditItem.resx">
-      <DependentUpon>FormEditItem.cs</DependentUpon>
+    <EmbeddedResource Include="FormItemEditor.resx">
+      <DependentUpon>FormItemEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditItemType.resx">
       <DependentUpon>FormEditItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatEditor.resx">
+      <DependentUpon>FormStatEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCtrlCharacterEditInfo.resx">
       <DependentUpon>UserCtrlCharacterEditInfo.cs</DependentUpon>
