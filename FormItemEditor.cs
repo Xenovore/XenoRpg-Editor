@@ -6,65 +6,164 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SQLite;
 
-namespace KevInvTest
+using XRpg;
+using XRpgUtils;
+
+namespace XenoRPGEditor
 {
 	public partial class FormItemEditor: Form
 	{
+		private ImageAtlas m_invicons = new ImageAtlas( @"..\RpgInvIcons.png" );
+		private FormEditItemType formTypeEdit;
+
+		public DataRow dataRowItem { get; set; }
+
+		//----------------------------------------------------------------------
 		public FormItemEditor()
 		{
 			InitializeComponent();
-
-
+			formTypeEdit = new FormEditItemType();
+			spinIconIdx.Maximum = m_invicons.ImageCount - 1;
 		}
 
-		
-		private void buttAddNewItem_Click( object sender, EventArgs e )
+
+		//----------------------------------------------------------------------------
+		private void formItemEdit_Load( object sender, EventArgs e )
 		{
-			FormAddNewItem formAdd = new FormAddNewItem();
-			formAdd.ShowDialog();
+			// Load info from DB table (data grid view) row...
+			txtID.Text                   = dataRowItem[ "id" ].ToString();
+			txtName.Text                 = dataRowItem[ "name" ].ToString();
+			//TODO: Wrap Converts in try...catch
+			txtType.Text                 = "0x" + Convert.ToUInt32( dataRowItem[ "type" ].ToString() ).ToString( "X8" );
+
+			spinIconIdx.Value            = Convert.ToDecimal( dataRowItem[ "icon_idx" ] );
+			UpdateIconPreview();
+
+			spinWeight.Value             = Convert.ToDecimal( dataRowItem[ "weight" ] );
+			//TODO: Should find the selected index from these values, not use them as indexes...
+			comboWidth.SelectedIndex     = Convert.ToInt32( dataRowItem[ "size_w" ] ) - 1;
+			comboHeight.SelectedIndex    = Convert.ToInt32( dataRowItem[ "size_h" ] ) - 1;
+
+			spinQuantity.Value           = Convert.ToDecimal( dataRowItem[ "quantity" ] );
+			spinQuantityCap.Value        = Convert.ToDecimal( dataRowItem[ "quantity_cap" ] );
+			comboDisabled.SelectedIndex  = Convert.ToInt32( dataRowItem[ "disabled" ] );
+			comboContainer.Text          = "0x" + Convert.ToUInt32( dataRowItem[ "id_container" ].ToString() ).ToString( "X8" );
+			rtfDescription.Text          = dataRowItem[ "desc" ].ToString();
+
+			//TODO: Load container info...
 		}
 
-		
-		private void buttLoadTable_Click( object sender, EventArgs e )
+		//----------------------------------------------------------------------
+		public void UpdateIconPreview()
 		{
-			string strDBConn = @"Data Source=InvTest.sqlite";
-			SQLiteConnection sqlConn = 
-				new SQLiteConnection( strDBConn );
-			sqlConn.Open();
+			pictItemIcon.Image = m_invicons.GetSubImageAt( (ushort)spinIconIdx.Value );
+		}
 
-			// Execute query on database
-			string strSQL = "SELECT * FROM " + comboTables.Text;
 
-			SQLiteCommand sqlCmd = new SQLiteCommand( strSQL, sqlConn );
-			SQLiteDataAdapter sqlAdapter = new SQLiteDataAdapter( sqlCmd );
-			DataSet dataset = new DataSet();
+		//----------------------------------------------------------------------
+		private void EnableContInfo()
+		{
+			//TODO: Wrap in try...catch
+			uint iTypeVal = Convert.ToUInt32( txtType.Text, 16 );
+
+			pnlContInfo.Enabled = ( ( iTypeVal & (uint)ItemTypeEnum.Container ) > 0 );
+		}
+
+
+		//----------------------------------------------------------------------
+		private void txtType_TextChanged( object sender, EventArgs e )
+		{
+			EnableContInfo();
+		}
+
+
+		//----------------------------------------------------------------------
+		private void buttType_Click( object sender, EventArgs e )
+		{
+			this.Enabled = false;
 			try
 			{
-				sqlAdapter.Fill( dataset );
-				DataTable datatable = dataset.Tables[ 0 ];
-				dataGridView1.DataSource = datatable;
+				formTypeEdit.TypeValue = Convert.ToUInt32( txtType.Text, 16 );
 			}
-			catch ( Exception ex )
+			catch
 			{
-				MessageBox.Show( "Error: " + ex.Message );
+				// Conversion exception... bogus text
+				formTypeEdit.TypeValue = 0x00000000;
 			}
 
-			sqlConn.Close();
+			DialogResult result = formTypeEdit.ShowDialog();
+			if ( result == DialogResult.OK )
+			{
+				//TODO: CORRECTLY OR ALL BIT VALUES...
+				txtType.Text = "0x" + formTypeEdit.TypeValue.ToString( "X8" );
+				EnableContInfo();
+			}
 
-			dataGridView1.Columns[ 0 ].Width = 50; // ID
-			dataGridView1.Columns[ 2 ].Width = 70; // ItemType
-			dataGridView1.Columns[ 3 ].Width = 60; // Wt
-			dataGridView1.Columns[ 4 ].Width = 50; // SizeW
-			dataGridView1.Columns[ 5 ].Width = 50; // SizeH
-			dataGridView1.Columns[ 6 ].Width = 60; // Qty
-			dataGridView1.Columns[ 7 ].Width = 80; // QtyCap
-
-			dataGridView1.Columns[ 2 ].HeaderText = "Type";
-			dataGridView1.Columns[ 3 ].HeaderText = "Wt";
-			dataGridView1.Columns[ 6 ].HeaderText = "Qty";
-			dataGridView1.Columns[ 7 ].HeaderText = "Qty Cap";
+			this.Enabled = true;
 		}
+
+
+		//----------------------------------------------------------------------
+		private void buttTypeAllowed_Click( object sender, EventArgs e )
+		{
+			this.Enabled = false;
+
+			DialogResult result = formTypeEdit.ShowDialog();
+			if ( result == DialogResult.OK )
+			{
+				//TODO: CORRECTLY OR ALL BIT VALUES...
+				txtTypeAllowed.Text = "0x" + formTypeEdit.TypeValue.ToString( "X8" );
+			}
+
+			this.Enabled = true;
+		}
+
+
+		//----------------------------------------------------------------------------
+		private void formItemEdit_Deactivate( object sender, EventArgs e )
+		{
+		}
+
+
+		//----------------------------------------------------------------------------
+		private void spinIconIdx_ValueChanged( object sender, EventArgs e )
+		{
+
+			// Attempting to shift origin... doesn't work...
+			float fX = pictItemIcon.Width;
+			float fY = pictItemIcon.Height / 2;
+			Graphics g = pictItemIcon.CreateGraphics();
+			g.TranslateTransform( fX, fY );
+
+			UpdateIconPreview();
+		}
+
+
+		//----------------------------------------------------------------------------
+		private void cbZoom_CheckedChanged( object sender, EventArgs e )
+		{
+			pictItemIcon.SizeMode = ( cbZoom.Checked ? PictureBoxSizeMode.Zoom : PictureBoxSizeMode.Normal );
+		}
+
+
+		//----------------------------------------------------------------------------
+		private void formItemEdit_FormClosing( object sender, FormClosingEventArgs e )
+		{
+			var result = MessageBox.Show( "Save changes?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+			if ( result == DialogResult.Yes )
+			{
+				//TODO: IF THIS A BRAND-NEW ITEM, THE DATA ROW WON'T EXIST YET; NEED TO CREATE A NEW DATA ROW FIRST.
+				dataRowItem[ "name"   ] = txtName.Text;
+				dataRowItem[ "type"   ] = Convert.ToInt64( txtType.Text, 16 );
+				dataRowItem[ "weight" ] = Convert.ToDouble( spinWeight.Value );
+				dataRowItem[ "size_w" ] = comboWidth.Text;
+				dataRowItem[ "size_h" ] = comboHeight.Text;
+
+				this.DialogResult = result;
+			}
+		}
+
+
 	}
 }
