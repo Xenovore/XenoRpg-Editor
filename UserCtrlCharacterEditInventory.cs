@@ -24,12 +24,12 @@ namespace XenoRPGEditor
 
 		}
 
-		public UserCtrlCharacterEditInventory( uint iCharacterId )
+		public UserCtrlCharacterEditInventory( uint characterId )
 		{
 			InitializeComponent();
 
 			// Load character inventory...
-			var character = CharacterManager.LoadCharacterById( iCharacterId );
+			var character = CharacterManager.GetCharacterById( characterId );
 			_contBody = XRpg.InventoryManager.LoadContainer( character.ContBodyId );
 
 			_atlasItemIcons = new XRpgUtils.ImageAtlas( "Images/RpgInvIcons.png" );

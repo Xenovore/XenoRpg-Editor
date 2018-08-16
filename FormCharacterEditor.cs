@@ -26,16 +26,16 @@ namespace XenoRPGEditor
 
 
 		//----------------------------------------------------------------------
-		public FormCharacterEditor( uint iCharacterId )
+		public FormCharacterEditor( uint characterId )
 		{
-			Debug.Assert( iCharacterId > 0 );
+			Debug.Assert( characterId > 0 );
 
 			InitializeComponent();
 
-			var ucCharEditInfo = new UserCtrlCharacterEditInfo( iCharacterId );
+			var ucCharEditInfo = new UserCtrlCharacterEditInfo( characterId );
 			tabControl.AddUserControlTab( ucCharEditInfo, "Stats & Info" );
 
-			var ucCharEditInventory = new UserCtrlCharacterEditInventory( iCharacterId );
+			var ucCharEditInventory = new UserCtrlCharacterEditInventory( characterId );
 			tabControl.AddUserControlTab( ucCharEditInventory, "Inventory" );
 
 		}

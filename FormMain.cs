@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using XRpg;
 using ExtensionMethods;
 
 namespace XenoRPGEditor
@@ -33,6 +32,11 @@ namespace XenoRPGEditor
 		public FormMain()
 		{
 			InitializeComponent();
+
+			//TODO: RpgEngine.Init() ???
+			XRpg.CharacterManager.Init();
+			XRpg.InventoryManager.Init();
+			// XRpg.ActionManager.Init();
 
 			var ucCharacters = new UserCtrlCharactersView();
 			tabCtrlMain.AddUserControlTab( ucCharacters, "Characters" );

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 using XRpg;
 
@@ -19,13 +16,9 @@ namespace XenoRPGEditor
 		}
 
 
-		public UserCtrlCharacterEditInfo( uint iCharacterId )
+		public UserCtrlCharacterEditInfo( uint characterId )
 		{
 			InitializeComponent();
-
-			//TODO: DO WE NEED THIS HERE?
-			//CharacterManager.LoadAllStats(); // Attributes, resistances, skills
-
 
 			// Init UI for item type selection...
 			/*
@@ -35,15 +28,15 @@ namespace XenoRPGEditor
 			*/
 
 			// Load default character
-			var character = CharacterManager.LoadCharacterById( iCharacterId );
+			var character = CharacterManager.GetCharacterById( characterId );
 			PopulateCharInfo( character );
 
 			// Load all stats...
-			character.ListAllStats = CharacterManager.LoadCharacterStats( character.Id );
+			character.ListStats = CharacterManager.LoadCharacterStats( character.Id );
 			textLevel.Text = $"{(int)character.CalculateCharacterLevel()}";
 
 			// Must have DataTable in order to filter...
-			DataTable dt = ToDataTable( character.ListAllStats );
+			DataTable dt = ToDataTable( character.ListStats );
 
 			gridCharacterStats.DataSource = dt;
 			AdjustGrid( gridCharacterStats );
