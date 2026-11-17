@@ -7,6 +7,16 @@ using System.Diagnostics;
 namespace XRpgUtils
 {
 	//TODO: REPLACE ALL MESSAGEBOXES WITH SOMETHING ELSE; LOG FILE?
+	
+	// ImageAtlas allows taking an image and splitting it into
+	// arbitrarily shaped subimages separated by a "chromakey" color.
+	// The exoected chromakey color is read at position (0, 0); magenta is preferred.
+	// The image is scanned left to right, top to bottom, reading pixel colors.
+	// Pixels with the chromakey color define the sub-image edges.
+	// A list of rectangles is generated, defining the sub-images framed by the chromakey pixels.
+	//
+	// Use GetSubImageAt( <index> ) to retrieve a sub-image bitmap at the given index.
+	
 	public class ImageAtlas
 	{
 		Bitmap _bitmap;
